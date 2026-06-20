@@ -355,7 +355,7 @@
   <!-- ===== 10. RAG技术栈 ===== -->
   <section class="slide" data-title="RAG技术栈">
     <p class="kicker">Category 02 . RAG</p>
-    <h2 class="h2">📚 知识库核心技术：RAG+检索</h2>
+    <h2 class="h2">📚 RAG：检索增强生成</h2>
     <p class="dim" style="margin-bottom:20px">RAG（Retrieval-Augmented Generation）检索增强生成，让 LLM 连接企业私有知识，给出精准回答</p>
     <div class="grid g2 mt-m" style="gap:16px">
       <div class="card" style="padding:16px">
@@ -385,7 +385,7 @@
       <div class="card" style="padding:16px">
         <h4 style="margin:0 0 10px">📊 评估与优化</h4>
         <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
-          <li>RAGAS 评估框架：忠实度、相关性、精准度</li>
+          <li>RAG Assessment（RAGAS）评估框架：忠实度、相关性、精准度</li>
           <li>A/B 测试不同切片策略与 Embedding 模型</li>
           <li>用户反馈闭环：点赞/踩 - 持续优化检索质量</li>
         </ul>
@@ -411,32 +411,32 @@
         <div class="emoji">✂️</div>
         <div>
           <h5 style="margin:0 0 4px">切片策略 -- 粒度决定精度</h5>
-          <p class="dim" style="font-size:13px;margin:0">太小丢失上下文，太大检索不精准。推荐 512-1024 tokens + 10% 重叠窗口。按文档类型自适应调整。</p>
+          <p class="dim" style="font-size:13px;margin:0">太小丢失上下文，太大检索不精准。推荐 chunk=512~1024 tokens，相邻 chunk 重叠 10%（即 chunk_size × 0.1，如 512→重叠51 tokens，1024→重叠102 tokens）。按文档类型自适应调整。</p>
         </div>
       </div>
       <div class="card pain-card">
         <div class="emoji">🔢</div>
         <div>
           <h5 style="margin:0 0 4px">Embedding 模型 -- 语义理解的基石</h5>
-          <p class="dim" style="font-size:13px;margin:0">中文场景推荐 bge-large-zh / text2vec-large-chinese。多语言混合文档需要 multilingual 模型。</p>
+          <p class="dim" style="font-size:13px;margin:0">text2vec-base-multilingual — 支持中英+多语言，轻量<br>paraphrase-multilingual-MiniLM-L12-v2 — 支持 50+ 语言，速度快<br>multilingual-e5-large — 微软出品，多语言效果好</p>
         </div>
       </div>
       <div class="card pain-card">
         <div class="emoji">🔍</div>
         <div>
           <h5 style="margin:0 0 4px">检索策略 -- 混合召回 + 重排序</h5>
-          <p class="dim" style="font-size:13px;margin:0">纯向量检索漏掉精确关键词匹配。BM25 + Embedding 混合召回，搭配 Cross-Encoder Reranker 精排。</p>
+          <p class="dim" style="font-size:13px;margin:0">BM25（精确关键词） + Embedding（语义理解） 双路混合召回 → Cross-Encoder Reranker 对候选结果重新评分排序 → 输出 Top 3 最优片段给 LLM。</p>
         </div>
       </div>
       <div class="card pain-card">
         <div class="emoji">📝</div>
         <div>
           <h5 style="margin:0 0 4px">Prompt 工程 -- 引导 LLM 正确使用检索结果</h5>
-          <p class="dim" style="font-size:13px;margin:0">明确指令：基于提供的文档回答，不知道就说不知道。引用来源、禁止编造。RAGAS 框架持续评估。</p>
+          <p class="dim" style="font-size:13px;margin:0">明确指令：基于提供的文档回答，不知道就说不知道。引用来源、禁止编造。RAG Assessment（RAGAS）框架持续评估。</p>
         </div>
       </div>
     </div>
-    <div class="notes">RAG 质量五要素：文档质量 - 切片策略 - Embedding 模型 - 混合检索+重排序 - Prompt 工程。每个环节都可能成为瓶颈，需要系统性评估和持续优化。RAGAS 是最常用的评估框架。</div>
+    <div class="notes">RAG 质量五要素：文档质量 - 切片策略 - Embedding 模型 - 混合检索+重排序 - Prompt 工程。每个环节都可能成为瓶颈，需要系统性评估和持续优化。RAG Assessment（RAGAS）是最常用的评估框架。</div>
   </section>
 
   <!-- ===== 12. DocMind演示版 ===== -->
