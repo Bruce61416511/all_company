@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="corporate-clean">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 驱动企业伙伴转型</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="assets/base.css">
+<link rel="stylesheet" id="theme-link" href="assets/themes/corporate-clean.css">
+<link rel="stylesheet" href="assets/animations/animations.css">
+<style>
+  .tool-chip { display:inline-block; padding:6px 16px; border-radius:var(--radius); font-weight:700; font-size:14px; border:2px solid var(--border); }
+  .tool-chip.purple { border-color:#7C3AED; color:#7C3AED; background:#F5F3FF; }
+  .tool-chip.cyan   { border-color:#06B6D4; color:#06B6D4; background:#ECFEFF; }
+  .tool-chip.blue   { border-color:#3B82F6; color:#3B82F6; background:#EFF6FF; }
+  .tool-chip.coral  { border-color:#E94560; color:#E94560; background:#FFF1F2; }
+  .agent-card { text-align:center; padding:24px 12px; }
+  .agent-card .icon { font-size:32px; margin-bottom:8px; }
+  .agent-card h5 { margin:4px 0 6px; font-size:15px; }
+  .agent-card .desc { font-size:11px; color:var(--text-3); line-height:1.5; }
+  .accent-bar { width:48px; height:4px; border-radius:2px; margin-bottom:16px; }
+  .accent-bar.purple { background:#7C3AED; } .accent-bar.cyan { background:#06B6D4; }
+  .accent-bar.blue { background:#3B82F6; } .accent-bar.coral { background:#E94560; }
+  .accent-bar.green { background:#10B981; }
+  .pain-card { display:flex; align-items:flex-start; gap:16px; padding:20px; }
+  .pain-card .emoji { font-size:28px; flex-shrink:0; width:48px; height:48px; display:flex; align-items:center; justify-content:center; border-radius:var(--radius); background:var(--surface-2); }
+  .matrix-layer { border-left:4px solid; padding:12px 16px; }
+  .matrix-layer.purple { border-color:#7C3AED; } .matrix-layer.cyan { border-color:#06B6D4; }
+  .matrix-layer.green { border-color:#10B981; } .matrix-layer.coral { border-color:#E94560; }
+  .matrix-layer .layer-title { font-size:20px; font-weight:800; margin-bottom:4px; }
+  .matrix-layer .layer-tools { font-size:14px; color:var(--text-2); margin-bottom:2px; }
+  .matrix-layer .layer-value { font-size:12px; color:var(--text-3); }
+  .table-compare { width:100%; border-collapse:collapse; }
+  .table-compare th { background:var(--accent); color:#fff; padding:12px 16px; text-align:left; font-size:13px; font-weight:700; }
+  .table-compare td { padding:12px 16px; font-size:13px; border-bottom:1px solid var(--border); }
+  .table-compare tr:nth-child(even) td { background:var(--bg-soft); }
+  .pill-tag { display:inline-block; padding:4px 14px; border-radius:99px; font-size:13px; font-weight:600; background:var(--surface-2); color:var(--accent-2); }
+</style>
+</head>
+<body data-themes="corporate-clean,engineering-whiteprint,blueprint,minimal-white,swiss-grid" data-theme-base="assets/themes/">
+<div class="deck">
+  <!-- ===== 1. Cover ===== -->
+  <section class="slide center tc" data-title="封面">
+    <div style="max-width:860px;margin:0 auto">
+      <p class="kicker" style="font-size:18px;letter-spacing:4px;margin-bottom:20px">AI x ENTERPRISE x TRANSFORMATION</p>
+      <h1 class="anim-fade-up" data-anim="fade-up" style="font-size:52px;line-height:1.3;margin-bottom:16px">
+        AI 驱动企业<br><span class="gradient-text">伙伴转型</span>
+      </h1>
+      <p class="lede" style="font-size:20px;color:var(--text-2);margin-bottom:32px">16 个企业 x 8 类 AI 应用场景 x 全链路覆盖</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;max-width:700px;margin:0 auto">
+        <span class="badge">开发环境</span><span class="badge">知识问答</span><span class="badge">数据存储</span>
+        <span class="badge">数据处理</span><span class="badge">智能客服</span><span class="badge">营销自动化</span>
+        <span class="badge">预测分析</span><span class="badge">安全合规</span>
+      </div>
+    </div>
+    <div class="deck-footer"><span class="dim2">2026年6月</span><span class="slide-number" data-current="1" data-total="21"></span></div>
+  </section>
+
+  <!-- ===== 2. 企业总览 ===== -->
+  <section class="slide" data-title="企业总览">
+    <p class="kicker">Overview</p>
+    <h2 class="h2" style="margin-bottom:24px">16 个企业 x 行业分布</h2>
+    <div class="grid g4 mt-m" style="gap:12px">
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">🏭 山东泰开变压器</h4><p class="dim" style="font-size:12px;margin:0">高端制造 . 电力装备</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">🏗️ 山东泰山钢铁</h4><p class="dim" style="font-size:12px;margin:0">钢铁冶炼 . 传统重工</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">⚡ 山东泰开电力设备</h4><p class="dim" style="font-size:12px;margin:0">电力设备 . 智能制造</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">🎓 开放大学继续教育学院</h4><p class="dim" style="font-size:12px;margin:0">教育 . 在线学习</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">📡 华为技术</h4><p class="dim" style="font-size:12px;margin:0">ICT . 通信设备</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">🔬 长沙景嘉微电子</h4><p class="dim" style="font-size:12px;margin:0">芯片设计 . 半导体</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">💊 长沙都正生物科技</h4><p class="dim" style="font-size:12px;margin:0">生物医药 . CRO</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">🤖 数行为科技</h4><p class="dim" style="font-size:12px;margin:0">AI . 数据服务</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">💧 永州水投</h4><p class="dim" style="font-size:12px;margin:0">水利 . 公共事业</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">📦 顺丰速运</h4><p class="dim" style="font-size:12px;margin:0">物流 . 供应链</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">🔭 睿创微纳</h4><p class="dim" style="font-size:12px;margin:0">红外成像 . 光电传感</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">☁️ 中科云谷开发平台</h4><p class="dim" style="font-size:12px;margin:0">工业互联网 . PaaS</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">🏗️ 长沙中联重科</h4><p class="dim" style="font-size:12px;margin:0">工程机械 . 高端装备</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">💻 科华数据</h4><p class="dim" style="font-size:12px;margin:0">数据中心 . 云计算</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">🤝 蓝凌协同办公</h4><p class="dim" style="font-size:12px;margin:0">OA . 企业协同</p></div>
+      <div class="card" style="padding:14px"><h4 style="font-size:14px;margin:0 0 4px">🏥 微医远程医疗</h4><p class="dim" style="font-size:12px;margin:0">互联网医疗 . 健康</p></div>
+    </div>
+  </section>
+
+  <!-- ===== 3. AI 应用概览 ===== -->
+  <section class="slide" data-title="AI应用概览">
+    <p class="kicker">AI Categories</p>
+    <h2 class="h2" style="margin-bottom:32px">8 类 AI 应用场景概览</h2>
+    <div style="display:flex;flex-direction:column;gap:14px;max-width:800px;margin:0 auto">
+      <div style="display:flex;align-items:center;gap:16px">
+        <span style="background:var(--accent);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">01</span>
+        <div><strong style="font-size:18px">开发环境与维护</strong><p class="dim" style="margin:4px 0 0">IDE+AI 协同、Vibe Coding、AI 辅助开发全流程</p></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <span style="background:var(--accent);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">02</span>
+        <div><strong style="font-size:18px">知识库问答</strong><p class="dim" style="margin:4px 0 0">RAG 检索增强生成、企业知识管理、DocMind 演示</p></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <span style="background:var(--accent);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">03</span>
+        <div><strong style="font-size:18px">数据存储与计算</strong><p class="dim" style="margin:4px 0 0">多模态数据管理、自然语言查询、向量数据库</p></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <span style="background:var(--accent);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">04</span>
+        <div><strong style="font-size:18px">数据处理</strong><p class="dim" style="margin:4px 0 0">AI 图片生成、视频生成、文档智能解析</p></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <span style="background:var(--accent);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">05</span>
+        <div><strong style="font-size:18px">智能客服与沟通</strong><p class="dim" style="margin:4px 0 0">7x24 自动应答、多轮对话、业务知识融合</p></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <span style="background:var(--accent);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">06</span>
+        <div><strong style="font-size:18px">营销自动化</strong><p class="dim" style="margin:4px 0 0">自动化营销流程、合同管理、内容生成</p></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <span style="background:var(--accent);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">07</span>
+        <div><strong style="font-size:18px">预测分析与决策支持</strong><p class="dim" style="margin:4px 0 0">销量预测、异常检测、经营决策 AI 辅助</p></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:16px">
+        <span style="background:var(--accent);color:#fff;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;flex-shrink:0">08</span>
+        <div><strong style="font-size:18px">安全合规</strong><p class="dim" style="margin:4px 0 0">数据安全防护、合规审核、AI 安全监控</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 4. Category 01 - 开发环境维护 ===== -->
+  <section class="slide" data-title="开发环境维护">
+    <p class="kicker">Category 01</p>
+    <h2 class="h2">💻 开发环境与维护</h2>
+    <p class="dim" style="margin-bottom:20px">开发环境是 AI 工具落地的最前线。从 IDE 插件到云开发平台，AI 正在重塑编码方式。</p>
+    <div class="grid g2 mt-m" style="gap:20px">
+      <div class="card" style="padding:20px">
+        <div class="accent-bar purple"></div>
+        <h4 style="margin:0 0 8px">当前痛点</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>开发环境碎片化，工具链配置复杂，新人上手慢</li>
+          <li>代码质量依赖人工 Review，评审效率低、覆盖面窄</li>
+          <li>跨团队协作缺乏统一规范，技术债务累积</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:20px">
+        <div class="accent-bar cyan"></div>
+        <h4 style="margin:0 0 8px">AI 解决方案</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>AI 代码补全 + 智能提示，编码效率提升 50%+</li>
+          <li>自动化 Code Review，AI 检测 Bug + 安全漏洞</li>
+          <li>Vibe Coding：自然语言描述需求 - AI 生成完整代码</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notes">开发环境与维护是 AI 工具最直接的应用场景之一，覆盖 GPT-4、Claude、DeepSeek-Coder 等模型，整体可达 30%-60% 效率提升。</div>
+  </section>
+
+  <!-- ===== 5. Category 01 - 开发业务场景 ===== -->
+  <section class="slide" data-title="开发业务场景">
+    <p class="kicker">Category 01 . Service</p>
+    <h2 class="h2">🛠️ 开发业务场景分类</h2>
+    <p class="dim" style="margin-bottom:16px">业务场景覆盖：嵌入式、工控系统、企业平台、管理系统</p>
+    <div class="grid g3 mt-m" style="gap:14px">
+      <div class="card" style="padding:16px">
+        <h4 style="margin:0 0 8px">🔌 嵌入式开发</h4>
+        <p class="dim" style="font-size:13px;margin:0">C/C++ 固件开发、驱动调试、RTOS 系统集成。AI 辅助代码生成 + 静态分析</p>
+      </div>
+      <div class="card" style="padding:16px">
+        <h4 style="margin:0 0 8px">🏭 工控系统</h4>
+        <p class="dim" style="font-size:13px;margin:0">PLC 编程、SCADA 监控、MES 制造执行。AI 优化控制逻辑与故障诊断</p>
+      </div>
+      <div class="card" style="padding:16px">
+        <h4 style="margin:0 0 8px">☁️ 企业平台</h4>
+        <p class="dim" style="font-size:13px;margin:0">ERP / CRM / OA 系统定制开发。AI 加速业务逻辑编写与接口联调</p>
+      </div>
+    </div>
+    <div class="notes">三类业务场景覆盖从硬件到软件的完整开发栈：嵌入式、工控系统、企业平台。AI 在每一层都有具体的增效手段。</div>
+  </section>
+
+  <!-- ===== 6. Category 01 - IDE+AI 协同 ===== -->
+  <section class="slide" data-title="IDE+AI协同模式">
+    <p class="kicker">Category 01 . IDE+AI</p>
+    <h2 class="h2">🤖 IDE + AI 协同开发模式</h2>
+    <p class="dim" style="margin-bottom:20px">当前最主流的高效开发方式：IDE 提供工具链，AI 提供智能辅助，各司其职、协同增效</p>
+    <div class="grid g2 mt-m" style="gap:20px">
+      <div class="card" style="padding:20px">
+        <div class="accent-bar blue"></div>
+        <h4 style="margin:0 0 10px">IDE 角色</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>项目管理、版本控制（Git）、依赖管理</li>
+          <li>语法高亮、代码导航、重构工具</li>
+          <li>编译构建、调试诊断、性能分析</li>
+          <li>插件生态：VS Code / JetBrains / Cursor</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:20px">
+        <div class="accent-bar purple"></div>
+        <h4 style="margin:0 0 10px">AI 角色</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>智能代码补全（Copilot / Codeium / ????）</li>
+          <li>自然语言 - 代码生成（Chat / Composer 模式）</li>
+          <li>Bug 定位 + 自动修复建议</li>
+          <li>单元测试自动生成、文档自动编写</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notes">IDE + AI 协同模式是当前最高效的开发方式。IDE 提供稳定工具链，AI 提供智能辅助，两者互补而非替代。每项任务都在熟悉的 IDE 界面内完成，AI 实时增强效率。</div>
+  </section>
+
+  <!-- ===== 7. Category 01 - IDE 人工写代码 ===== -->
+  <section class="slide" data-title="IDE 人工写代码">
+    <p class="kicker">Category 01 . IDE基础</p>
+    <h2 class="h2">⌨️ IDE 与人工写代码</h2>
+    <p class="dim" style="margin-bottom:16px">传统模式下，IDE 是唯一的开发入口。产品、平台、管理系统、ERP 全部在 IDE 中完成，全链路改造周期长、人力成本高。</p>
+    <div class="grid g4 mt-m" style="gap:12px">
+      <div class="card" style="padding:14px;text-align:center">
+        <div style="font-size:32px;margin-bottom:6px">📝</div>
+        <h5 style="margin:0 0 4px">项目定位</h5>
+        <p class="dim" style="font-size:12px;margin:0">需求分析到技术选型<br>全流程人工决策</p>
+      </div>
+      <div class="card" style="padding:14px;text-align:center">
+        <div style="font-size:32px;margin-bottom:6px">💻</div>
+        <h5 style="margin:0 0 4px">编码实现</h5>
+        <p class="dim" style="font-size:12px;margin:0">手写业务逻辑<br>调试 + 重构循环</p>
+      </div>
+      <div class="card" style="padding:14px;text-align:center">
+        <div style="font-size:32px;margin-bottom:6px">🔍</div>
+        <h5 style="margin:0 0 4px">代码审查</h5>
+        <p class="dim" style="font-size:12px;margin:0">人工 CR + 静态分析<br>依赖人工经验判断</p>
+      </div>
+      <div class="card" style="padding:14px;text-align:center">
+        <div style="font-size:32px;margin-bottom:6px">🚀</div>
+        <h5 style="margin:0 0 4px">发布部署</h5>
+        <p class="dim" style="font-size:12px;margin:0">CI/CD 流水线<br>运维监控与告警</p>
+      </div>
+    </div>
+    <div class="notes">传统模式下 IDE 是一切开发的中心。产品、平台、管理系统、ERP 全部在 IDE 中完成，全链路改造周期长、人力成本高。</div>
+  </section>
+  <!-- ===== 8. Category 01 - Vibe Coding ===== -->
+  <section class="slide" data-title="Vibe Coding">
+    <p class="kicker">Category 01 . Vibe Coding</p>
+    <h2 class="h2">🌊 Vibe Coding -- AI 写代码</h2>
+    <p class="dim" style="margin-bottom:16px">编程范式的根本转变：从"手动编写"到"自然语言驱动"。核心是 Prompt Engineering 写指令、AGENTS.md 为 AI 项目定方向、MCP 为 AI 连接外部工具，以及迭代修复 bug、Code Review 把关质量。</p>
+    <div class="grid g4 mt-m" style="gap:12px">
+      <div class="card" style="padding:14px;text-align:center">
+        <div style="font-size:32px;margin-bottom:6px">💬</div>
+        <h5 style="margin:0 0 4px">描述需求</h5>
+        <p class="dim" style="font-size:12px;margin:0">自然语言描述功能<br>PRD - AI 理解</p>
+      </div>
+      <div class="card" style="padding:14px;text-align:center">
+        <div style="font-size:32px;margin-bottom:6px">⚡</div>
+        <h5 style="margin:0 0 4px">AI 生成</h5>
+        <p class="dim" style="font-size:12px;margin:0">自动生成完整代码<br>多文件 + 测试 + 文档</p>
+      </div>
+      <div class="card" style="padding:14px;text-align:center">
+        <div style="font-size:32px;margin-bottom:6px">🔄</div>
+        <h5 style="margin:0 0 4px">迭代优化</h5>
+        <p class="dim" style="font-size:12px;margin:0">发现问题 - 描述修改<br>AI 自动修复 + 重构</p>
+      </div>
+      <div class="card" style="padding:14px;text-align:center">
+        <div style="font-size:32px;margin-bottom:6px">✅</div>
+        <h5 style="margin:0 0 4px">人工把关</h5>
+        <p class="dim" style="font-size:12px;margin:0">Code Review + 集成测试<br>确保质量与安全</p>
+      </div>
+    </div>
+    <div class="notes">Vibe Coding 的核心理念：开发者描述意图而非编写实现。核心技能变为 Prompt Engineering、AGENTS.md 项目指引、MCP 外部工具集成，以及迭代调试和 Code Review。</div>
+  </section>
+
+  <!-- ===== 9. Category 01 - 小乐同学 ===== -->
+  <section class="slide" data-title="小乐同学">
+    <p class="kicker">Vibe Coding 项目 . 小乐同学</p>
+    <h2 class="h2">🎓 小乐同学 -- 一站式协作智能工作平台</h2>
+    <p class="dim" style="margin-bottom:16px">Vibe Coding 理念的 0-1 实战案例：用 AI 驱动开发，从需求到产品仅用数周。目标是打造面向全员的 AI 工作台，实现"人人可用 AI"的 SaaS 产品愿景。</p>
+    <div class="grid g3 mt-m" style="gap:14px">
+      <div class="card agent-card">
+        <div class="icon">🧠</div>
+        <h5>AI 助手</h5>
+        <p class="desc">多模型对话 . 上下文记忆<br>知识库 RAG 增强</p>
+      </div>
+      <div class="card agent-card">
+        <div class="icon">📋</div>
+        <h5>任务管理</h5>
+        <p class="desc">AI 拆解任务 . 自动分配<br>进度追踪与提醒</p>
+      </div>
+      <div class="card agent-card">
+        <div class="icon">📊</div>
+        <h5>数据分析</h5>
+        <p class="desc">自然语言查询数据<br>自动生成可视化报告</p>
+      </div>
+      <div class="card agent-card">
+        <div class="icon">🔗</div>
+        <h5>系统集成</h5>
+        <p class="desc">MCP 协议连接外部工具<br>ERP / CRM / OA 打通</p>
+      </div>
+      <div class="card agent-card">
+        <div class="icon">🎨</div>
+        <h5>内容创作</h5>
+        <p class="desc">AI 生成文案 . 图片 . 视频<br>营销素材一键生成</p>
+      </div>
+      <div class="card agent-card">
+        <div class="icon">🛡️</div>
+        <h5>安全管控</h5>
+        <p class="desc">权限分级 . 数据隔离<br>操作审计与合规</p>
+      </div>
+    </div>
+    <div class="notes">小乐同学是 Vibe Coding 方法论从 0 到 1 的完整实践：用 AI 驱动开发全流程，数周内完成从概念到可交付 SaaS 产品的跨越，核心是"自然语言驱动 + AI 执行 + 人工把关"的三位一体模式。</div>
+  </section>
+
+  <!-- ===== 10. Category 02 - 知识库问答 ===== -->
+  <section class="slide" data-title="知识库问答">
+    <p class="kicker">Category 02</p>
+    <h2 class="h2">📚 知识库问答</h2>
+    <p class="dim" style="margin-bottom:20px">知识库问答是覆盖企业最多（9家）的场景需求。RAG 检索增强生成，让 AI 基于企业私有文档实时回答，实现真正的企业级智能。</p>
+    <div class="grid g2 mt-m" style="gap:20px">
+      <div class="card" style="padding:20px">
+        <div class="accent-bar coral"></div>
+        <h4 style="margin:0 0 10px">企业痛点</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>文档分散在多个系统，查找效率低</li>
+          <li>新员工培训周期长，知识传承困难</li>
+          <li>客服需要翻阅大量手册，响应慢</li>
+          <li>专家知识难以标准化和复用</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:20px">
+        <div class="accent-bar cyan"></div>
+        <h4 style="margin:0 0 10px">RAG 方案优势</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>秒级检索企业全量文档，精准定位答案</li>
+          <li>基于源文档回答，可溯源、可验证</li>
+          <li>支持多格式：PDF、Word、网页、数据库</li>
+          <li>私有化部署，数据不出企业内网</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notes">知识库问答是覆盖企业最多（9家）的刚需场景。RAG 检索增强生成，让企业私有文档驱动 AI 回答，实现知识获取的即时化和精准化。</div>
+  </section>
+
+  <!-- ===== 11. Category 02 - RAG+检索 ===== -->
+  <section class="slide" data-title="RAG技术栈">
+    <p class="kicker">Category 02 . RAG Tech</p>
+    <h2 class="h2">📚 知识库核心技术：RAG+检索</h2>
+    <p class="dim" style="margin-bottom:20px">RAG（Retrieval-Augmented Generation）检索增强生成，让 LLM 连接企业私有知识，给出精准回答</p>
+    <div class="grid g2 mt-m" style="gap:16px">
+      <div class="card" style="padding:16px">
+        <h4 style="margin:0 0 10px">📄 文档解析与切片</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>图片 + 视频 - 视觉模型 - 文本描述（保留原文件 URL，关联 URL + 描述）</li>
+          <li>文本格式统一：PDF / Word / HTML / Markdown 统一处理</li>
+          <li>智能切片：语义段落、重叠窗口、自适应分块</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:16px">
+        <h4 style="margin:0 0 10px">🔍 检索与召回</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>向量检索（Embedding 语义匹配）+ 关键词检索（BM25）混合召回</li>
+          <li>重排序（Reranker）：Cross-Encoder 精排 Top-K</li>
+          <li>查询改写：问题扩展、多轮对话上下文理解</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:16px">
+        <h4 style="margin:0 0 10px">🧠 Prompt 注入与生成</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>检索到的文本片段注入 System Prompt</li>
+          <li>LLM 基于源文档生成回答，附带引用来源</li>
+          <li>支持多轮对话，记忆上下文</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:16px">
+        <h4 style="margin:0 0 10px">📊 评估与优化</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>RAGAS 评估框架：忠实度、相关性、精准度</li>
+          <li>A/B 测试不同切片策略与 Embedding 模型</li>
+          <li>用户反馈闭环：点赞/踩 - 持续优化检索质量</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notes">RAG 是企业知识库的核心架构。完整流程：文档解析 - 智能切片 - 向量化 - 混合检索 - Prompt 注入 - LLM 生成。让 AI 基于企业真实数据给出可信的回答。</div>
+  </section>
+
+  <!-- ===== 12. Category 02 - RAG 关键要素 ===== -->
+  <section class="slide" data-title="RAG关键要素">
+    <p class="kicker">Category 02 . Best Practices</p>
+    <h2 class="h2">🔑 好的 RAG 要注意哪些因素？</h2>
+    <p class="dim" style="margin-bottom:16px">构建高质量 RAG 系统的五个关键要素，直接决定回答质量</p>
+    <div style="display:flex;flex-direction:column;gap:12px;max-width:800px;margin:0 auto">
+      <div class="card pain-card">
+        <div class="emoji">📄</div>
+        <div>
+          <h5 style="margin:0 0 4px">文档质量 -- Garbage In, Garbage Out</h5>
+          <p class="dim" style="font-size:13px;margin:0">扫描件 OCR 准确率、PDF 表格解析、图片中的文字提取。文档质量直接决定检索上限。</p>
+        </div>
+      </div>
+      <div class="card pain-card">
+        <div class="emoji">✂️</div>
+        <div>
+          <h5 style="margin:0 0 4px">切片策略 -- 粒度决定精度</h5>
+          <p class="dim" style="font-size:13px;margin:0">太小丢失上下文，太大检索不精准。推荐 512-1024 tokens + 10% 重叠窗口。按文档类型自适应调整。</p>
+        </div>
+      </div>
+      <div class="card pain-card">
+        <div class="emoji">🔢</div>
+        <div>
+          <h5 style="margin:0 0 4px">Embedding 模型 -- 语义理解的基石</h5>
+          <p class="dim" style="font-size:13px;margin:0">中文场景推荐 bge-large-zh / text2vec-large-chinese。多语言混合文档需要 multilingual 模型。</p>
+        </div>
+      </div>
+      <div class="card pain-card">
+        <div class="emoji">🔍</div>
+        <div>
+          <h5 style="margin:0 0 4px">检索策略 -- 混合召回 + 重排序</h5>
+          <p class="dim" style="font-size:13px;margin:0">纯向量检索漏掉精确关键词匹配。BM25 + Embedding 混合召回，搭配 Cross-Encoder Reranker 精排。</p>
+        </div>
+      </div>
+      <div class="card pain-card">
+        <div class="emoji">📝</div>
+        <div>
+          <h5 style="margin:0 0 4px">Prompt 工程 -- 引导 LLM 正确使用检索结果</h5>
+          <p class="dim" style="font-size:13px;margin:0">明确指令：基于提供的文档回答，不知道就说不知道。引用来源、禁止编造。RAGAS 框架持续评估。</p>
+        </div>
+      </div>
+    </div>
+    <div class="notes">RAG 质量五要素：文档质量 - 切片策略 - Embedding 模型 - 混合检索+重排序 - Prompt 工程。每个环节都可能成为瓶颈，需要系统性评估和持续优化。RAGAS 是最常用的评估框架。</div>
+  </section>
+
+  <!-- ===== 13. Category 02 - DocMind 演示版 ===== -->
+  <section class="slide" data-title="DocMind演示版">
+    <p class="kicker">Category 02 . Demo</p>
+    <h2 class="h2">🧪 DocMind -- 企业知识库演示系统</h2>
+    <p class="dim" style="margin-bottom:14px">一个完整的企业文档上传 . 问答交互流程，RAG 技术落地实战 Demo</p>
+    <div class="grid g2 mt-m" style="gap:14px">
+      <div class="card" style="padding:14px">
+        <h4 style="margin:0 0 6px">📤 文档上传</h4>
+        <p class="dim" style="font-size:12px;margin:0">支持 PDF / Word / TXT / Markdown。<br>拖拽上传，自动触发解析流水线。</p>
+      </div>
+      <div class="card" style="padding:14px">
+        <h4 style="margin:0 0 6px">🔍 文档解析</h4>
+        <p class="dim" style="font-size:12px;margin:0">PDF 提取文本 + 表格。<br>图片 OCR 识别。保留文档结构。</p>
+      </div>
+      <div class="card" style="padding:14px">
+        <h4 style="margin:0 0 6px">✂️ 智能切片</h4>
+        <p class="dim" style="font-size:12px;margin:0">按段落+语义边界分块。<br>每块 500-800 tokens，含上下文重叠。</p>
+      </div>
+      <div class="card" style="padding:14px">
+        <h4 style="margin:0 0 6px">🗄️ 向量存储</h4>
+        <p class="dim" style="font-size:12px;margin:0">SQLite 存储元数据。<br>ChromaDB 向量索引，支持相似度检索。</p>
+      </div>
+      <div class="card" style="padding:14px">
+        <h4 style="margin:0 0 6px">🔎 混合检索</h4>
+        <p class="dim" style="font-size:12px;margin:0">jieba + TF-IDF 关键词检索。<br>Embedding 语义向量检索。Top-3 片段召回。</p>
+      </div>
+      <div class="card" style="padding:14px">
+        <h4 style="margin:0 0 6px">💬 问答生成</h4>
+        <p class="dim" style="font-size:12px;margin:0">检索结果注入 Prompt。<br>LLM 生成回答 + 引用来源标注。</p>
+      </div>
+      <div class="card" style="padding:14px">
+        <h4 style="margin:0 0 6px">🌐 Web 界面</h4>
+        <p class="dim" style="font-size:12px;margin:0">Streamlit / Gradio 快速搭建。<br>对话式 UI，支持多轮交互。</p>
+      </div>
+      <div class="card" style="padding:14px">
+        <h4 style="margin:0 0 6px">🔒 本地运行</h4>
+        <p class="dim" style="font-size:12px;margin:0">全离线运行，无需外部 API。<br>数据安全，适合企业内网部署。</p>
+      </div>
+    </div>
+    <div class="notes">DocMind 是 RAG 技术落地实战 Demo。完整流程：文档上传 - 内容提取 - 智能切片 - SQLite 存储 - jieba+TF-IDF 检索 - 召回 Top-3 片段 - LLM 生成回答。全离线运行，无需外部 API。</div>
+  </section>
+
+  <!-- ===== 14. Category 03 - 数据存储和计算 ===== -->
+  <section class="slide" data-title="数据存储和计算">
+    <p class="kicker">Category 03</p>
+    <h2 class="h2">🗄️ 数据的存储和计算</h2>
+    <p class="dim" style="margin-bottom:20px">多模态数据管理 + 自然语言查询，让非技术人员也能轻松获取业务数据</p>
+    <div class="grid g2 mt-m" style="gap:20px">
+      <div class="card" style="padding:20px">
+        <div class="accent-bar coral"></div>
+        <h4 style="margin:0 0 10px">数据存储</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>关系型数据库 + 向量数据库混合架构</li>
+          <li>支持结构化（表格）与非结构化（文档、图片）统一管理</li>
+          <li>数据血缘追踪与版本管理</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:20px">
+        <div class="accent-bar cyan"></div>
+        <h4 style="margin:0 0 10px">智能计算</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>NL2SQL：自然语言 . SQL 查询，无需写代码</li>
+          <li>自动生成数据报表与可视化图表</li>
+          <li>实时数据处理 + 批量计算引擎</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notes">NL2SQL + 可视化分析降低数据使用门槛，非技术人员也能自然语言查询业务数据。</div>
+  </section>
+  <!-- ===== 15. Category 04 - 数据处理 ===== -->
+  <section class="slide" data-title="数据处理">
+    <p class="kicker">Category 04</p>
+    <h2 class="h2">🎨 数据的处理</h2>
+    <p class="dim" style="margin-bottom:20px">AI 图片生成、视频生成、文档智能解析，覆盖内容生产全链条</p>
+    <div class="grid g2 mt-m" style="gap:20px">
+      <div class="card" style="padding:20px">
+        <div class="accent-bar purple"></div>
+        <h4 style="margin:0 0 10px">视觉内容生成</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>AI 图片生成：产品图、营销海报、电商素材</li>
+          <li>AI 视频生成：口播视频、产品演示、培训教程</li>
+          <li>图片修复与增强：老照片修复、分辨率提升</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:20px">
+        <div class="accent-bar green"></div>
+        <h4 style="margin:0 0 10px">文档智能处理</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>OCR 文字识别：扫描件、手写体、表格提取</li>
+          <li>文档比对：合同版本差异自动标注</li>
+          <li>智能分类：文档自动归类与标签</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notes">数据处理能力覆盖 8 个行业的核心需求：制造业的图纸识别、物流的运单提取、医疗的影像分析、金融的合同比对。</div>
+  </section>
+
+  <!-- ===== 16. Category 05 - 智能客服与沟通 ===== -->
+  <section class="slide" data-title="智能客服与沟通">
+    <p class="kicker">Category 05</p>
+    <h2 class="h2">💬 智能客服与沟通</h2>
+    <p class="dim" style="margin-bottom:20px">7x24 自动应答 + 多轮对话 + 业务知识融合，全面提升客户服务效率</p>
+    <div class="grid g2 mt-m" style="gap:20px">
+      <div class="card" style="padding:20px">
+        <div class="accent-bar blue"></div>
+        <h4 style="margin:0 0 10px">核心能力</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>LLM + Function Calling：调用业务 API 执行操作</li>
+          <li>RAG 知识库：基于企业文档提供精准回答</li>
+          <li>多轮对话：理解上下文，记住用户意图</li>
+          <li>情感识别：检测用户情绪，自动升级人工</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:20px">
+        <div class="accent-bar coral"></div>
+        <h4 style="margin:0 0 10px">典型场景</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>产品咨询：参数查询、库存确认、下单引导</li>
+          <li>售后支持：故障排查、退换货流程指引</li>
+          <li>内部服务：IT 支持、HR 问答、财务咨询</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notes">智能客服的核心是 LLM + Function Calling + RAG 三者结合。关键在于人工兜底设计：AI 解决 80% 常见问题，复杂问题无缝转接人工。</div>
+  </section>
+
+  <!-- ===== 17. Category 06 - 营销自动化 ===== -->
+  <section class="slide" data-title="营销自动化">
+    <p class="kicker">Category 06</p>
+    <h2 class="h2">📢 营销自动化</h2>
+    <p class="dim" style="margin-bottom:20px">自动化营销流程 + 合同管理 + 内容生成，AI 赋能全链路营销</p>
+    <div class="grid g2 mt-m" style="gap:20px">
+      <div class="card" style="padding:20px">
+        <div class="accent-bar green"></div>
+        <h4 style="margin:0 0 10px">营销流程自动化</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>线索评分：AI 自动评估商机质量与优先级</li>
+          <li>个性化触达：基于用户画像的精准营销</li>
+          <li>营销活动 ROI 预测与实时优化</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:20px">
+        <div class="accent-bar purple"></div>
+        <h4 style="margin:0 0 10px">内容与合同管理</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>AI 生成营销文案、产品描述、广告语</li>
+          <li>合同智能审查：条款提取、风险标注</li>
+          <li>竞品分析：自动抓取竞品信息生成报告</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notes">营销自动化 = RPA + AI 融合。核心价值在于：从手动重复操作 - AI 自动执行，释放人力聚焦高价值决策。</div>
+  </section>
+
+  <!-- ===== 18. Category 07 - 预测分析与决策支持 ===== -->
+  <section class="slide" data-title="预测分析与决策支持">
+    <p class="kicker">Category 07</p>
+    <h2 class="h2">📈 预测分析与决策支持</h2>
+    <p class="dim" style="margin-bottom:20px">销量预测 + 异常检测 + 经营决策，AI 作为"企业大脑"辅助决策</p>
+    <div class="grid g2 mt-m" style="gap:20px">
+      <div class="card" style="padding:20px">
+        <div class="accent-bar cyan"></div>
+        <h4 style="margin:0 0 10px">预测能力</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>销量预测：时序模型 + 外部因子（促销、季节、竞品）</li>
+          <li>库存优化：需求预测驱动的智能补货</li>
+          <li>异常检测：生产质量、设备故障、交易欺诈</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:20px">
+        <div class="accent-bar coral"></div>
+        <h4 style="margin:0 0 10px">决策支持</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>AI 经营分析：自动解读数据，生成决策建议</li>
+          <li>场景模拟：定价策略、市场扩张的 What-if 分析</li>
+          <li>风险预警：财务风险、供应链中断提前告警</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notes">预测分析是 AI 从"被动响应"到"主动预测"的跨越：基于历史数据预判未来，为企业经营提供数据驱动的决策支持。</div>
+  </section>
+
+  <!-- ===== 19. Category 08 - 安全合规 ===== -->
+  <section class="slide" data-title="安全合规">
+    <p class="kicker">Category 08</p>
+    <h2 class="h2">🛡️ 安全合规与安全</h2>
+    <p class="dim" style="margin-bottom:20px">数据安全防护 + 合规审核 + AI 安全监控，确保 AI 应用安全可控</p>
+    <div class="grid g2 mt-m" style="gap:20px">
+      <div class="card" style="padding:20px">
+        <div class="accent-bar coral"></div>
+        <h4 style="margin:0 0 10px">安全防护</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>数据脱敏：敏感信息自动识别与匿名化处理</li>
+          <li>访问控制：基于角色的细粒度权限管理</li>
+          <li>AI 防火墙：检测并拦截 Prompt 注入攻击</li>
+        </ul>
+      </div>
+      <div class="card" style="padding:20px">
+        <div class="accent-bar blue"></div>
+        <h4 style="margin:0 0 10px">合规审计</h4>
+        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
+          <li>合规扫描：GDPR、等保、行业法规自动检查</li>
+          <li>操作审计：全链路日志记录与异常行为告警</li>
+          <li>AI 模型安全：幻觉检测、偏见评估、对抗测试</li>
+        </ul>
+      </div>
+    </div>
+    <div class="notes">安全合规 = 数据安全 + 边缘计算。安全工程师借助 AI 模型，24 小时不间断监控防护。</div>
+  </section>
+
+  <!-- ===== 20. Summary ===== -->
+  <section class="slide center tc" data-title="总结">
+    <p class="kicker">Summary</p>
+    <h2 class="h2" style="margin-bottom:32px">AI 驱动企业 . 开发路径</h2>
+    <div class="grid g4 mt-m" style="gap:14px;max-width:900px;margin-left:auto;margin-right:auto">
+      <div class="card" style="padding:18px;text-align:center">
+        <div style="font-size:36px;margin-bottom:8px">💻</div>
+        <h4 style="margin:0 0 6px">开发环境</h4>
+        <p class="dim" style="font-size:12px;margin:0">IDE+AI . Vibe Coding<br>效率提升 50%+</p>
+      </div>
+      <div class="card" style="padding:18px;text-align:center">
+        <div style="font-size:36px;margin-bottom:8px">📚</div>
+        <h4 style="margin:0 0 6px">知识问答</h4>
+        <p class="dim" style="font-size:12px;margin:0">RAG 检索增强<br>企业知识秒级获取</p>
+      </div>
+      <div class="card" style="padding:18px;text-align:center">
+        <div style="font-size:36px;margin-bottom:8px">🗄️</div>
+        <h4 style="margin:0 0 6px">数据存储</h4>
+        <p class="dim" style="font-size:12px;margin:0">多模态数据管理<br>NL2SQL 自然查询</p>
+      </div>
+      <div class="card" style="padding:18px;text-align:center">
+        <div style="font-size:36px;margin-bottom:8px">🎨</div>
+        <h4 style="margin:0 0 6px">数据处理</h4>
+        <p class="dim" style="font-size:12px;margin:0">AI 图片 . 视频 . 文档<br>内容生产自动化</p>
+      </div>
+      <div class="card" style="padding:18px;text-align:center">
+        <div style="font-size:36px;margin-bottom:8px">💬</div>
+        <h4 style="margin:0 0 6px">智能客服</h4>
+        <p class="dim" style="font-size:12px;margin:0">7x24 自动应答<br>人工 + AI 协同</p>
+      </div>
+      <div class="card" style="padding:18px;text-align:center">
+        <div style="font-size:36px;margin-bottom:8px">📢</div>
+        <h4 style="margin:0 0 6px">营销自动化</h4>
+        <p class="dim" style="font-size:12px;margin:0">RPA+AI 全链路<br>营销 ROI 最大化</p>
+      </div>
+      <div class="card" style="padding:18px;text-align:center">
+        <div style="font-size:36px;margin-bottom:8px">📈</div>
+        <h4 style="margin:0 0 6px">预测分析</h4>
+        <p class="dim" style="font-size:12px;margin:0">销量预测 . 异常检测<br>数据驱动决策</p>
+      </div>
+      <div class="card" style="padding:18px;text-align:center">
+        <div style="font-size:36px;margin-bottom:8px">🛡️</div>
+        <h4 style="margin:0 0 6px">安全合规</h4>
+        <p class="dim" style="font-size:12px;margin:0">数据防护 . 合规审计<br>AI 安全可控</p>
+      </div>
+    </div>
+    <div class="notes">8 大 AI 应用场景覆盖企业运营全链路。从开发到客服，从数据到决策，AI 正在重塑每一个业务环节。</div>
+  </section>
+
+  <!-- ===== 21. Thanks ===== -->
+  <section class="slide center tc" data-title="Thanks">
+    <div style="max-width:700px;margin:0 auto">
+      <h1 style="font-size:56px;margin-bottom:20px">Thanks</h1>
+      <p class="lede" style="font-size:22px;color:var(--text-2);margin-bottom:16px">AI 驱动企业伙伴转型</p>
+      <p class="dim" style="font-size:16px">16 个企业 x 8 类场景 x 全链路覆盖</p>
+      <div style="margin-top:48px">
+        <p class="dim2" style="font-size:14px">2026年6月</p>
+      </div>
+    </div>
+    <div class="deck-footer"><span class="dim2">2026年6月</span><span class="slide-number" data-current="21" data-total="21"></span></div>
+  </section>
+
+</div>
+
+<script src="assets/runtime.js"></script>
+<script src="assets/animations/fx-runtime.js"></script>
+</body>
+</html>
