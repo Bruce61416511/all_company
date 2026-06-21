@@ -34,6 +34,7 @@
   .table-compare td { padding:12px 16px; font-size:13px; border-bottom:1px solid var(--border); }
   .table-compare tr:nth-child(even) td { background:var(--bg-soft); }
   .pill-tag { display:inline-block; padding:4px 14px; border-radius:99px; font-size:13px; font-weight:600; background:var(--surface-2); color:var(--accent-2); }
+
 </style>
 </head>
 <body data-themes="corporate-clean,engineering-whiteprint,blueprint,minimal-white,swiss-grid" data-theme-base="assets/themes/">
@@ -516,57 +517,264 @@
   <section class="slide" data-title="预测分析与决策支持">
     <p class="kicker">Category 03</p>
     <h2 class="h2">📈 预测分析与决策支持</h2>
-    <p class="dim" style="margin-bottom:20px">销量预测 + 异常检测 + 经营决策，AI 作为"企业大脑"辅助决策</p>
-    <div class="grid g2 mt-m" style="gap:20px">
-      <div class="card" style="padding:20px">
-        <div class="accent-bar cyan"></div>
-        <h4 style="margin:0 0 10px">预测能力</h4>
-        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
-          <li>销量预测：时序模型 + 外部因子（促销、季节、竞品）</li>
-          <li>库存优化：需求预测驱动的智能补货</li>
-          <li>异常检测：生产质量、设备故障、交易欺诈</li>
-        </ul>
+    <p class="dim" style="margin-bottom:16px">从销量预测到库存决策，AI 驱动的供应链智能</p>
+    <div style="display:flex;flex-direction:column;gap:10px;max-width:800px;margin:0 auto">
+      <div class="card pain-card">
+        <div class="emoji">📊</div>
+        <div>
+          <h5 style="margin:0 0 4px">SKU 销量预测</h5>
+          <p class="dim" style="font-size:13px;margin:0">TFT 多因素模型：融合历史销量、促销、天气、节假日、社媒热度，预测每个 SKU 未来 30 天日销量。<br>分层策略：爆款 → DeepAR / 腰部 → LightGBM / 长尾 → Croston，按量级匹配最优算法。</p>
+        </div>
       </div>
-      <div class="card" style="padding:20px">
-        <div class="accent-bar coral"></div>
-        <h4 style="margin:0 0 10px">决策支持</h4>
-        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
-          <li>AI 经营分析：自动解读数据，生成决策建议</li>
-          <li>场景模拟：定价策略、市场扩张的 What-if 分析</li>
-          <li>风险预警：财务风险、供应链中断提前告警</li>
-        </ul>
+      <div class="card pain-card">
+        <div class="emoji">📦</div>
+        <div>
+          <h5 style="margin:0 0 4px">库存决策</h5>
+          <p class="dim" style="font-size:13px;margin:0">安全库存：Monte Carlo 仿真 → 满足 98% 服务水平的最小库存量。<br>多仓调拨：整数规划求解最优调拨方案。<br>滞销预警：库龄 + 销量趋势 + 利润率 → 三级预警。</p>
+        </div>
+      </div>
+      <div class="card pain-card">
+        <div class="emoji">🛠️</div>
+        <div>
+          <h5 style="margin:0 0 4px">工具落地</h5>
+          <p class="dim" style="font-size:13px;margin:0">云平台：AWS Forecast / 阿里云 PAI — 零代码，按量付费。<br>ERP 内置：旺店通 / 聚水潭 — 功能一体，算法简化。<br>自建：开源模型 + 定制开发 — 灵活但需人力。</p>
+        </div>
       </div>
     </div>
-    <div class="notes">预测分析是 AI 从"被动响应"到"主动预测"的跨越：基于历史数据预判未来，为企业经营提供数据驱动的决策支持。</div>
+    <div class="notes">预测分析从 SKU 销量预测出发，贯穿库存决策全链路：预测 → 安全库存 → 调拨 → 滞销处理。工具层面覆盖云平台、ERP、自建三种路径。</div>
   </section>
+
+<section class="slide" data-title="需求预测引擎">
+
+<p class="kicker">Category 03 · 需求预测</p>
+
+<h2 class="h2">SKU销量预测</h2>
+
+<div class="grid g1 mt-m anim-stagger-list" data-anim-target style="gap:12px">
+
+<div class="card" style="padding:16px 20px">
+
+<div class="grid g2" style="gap:8px;font-size:12px">
+<div>
+<p style="margin:0 0 4px;font-weight:700;color:var(--accent)">💡 TFT · 多因素预测模型</p>
+<p style="margin:0 0 6px;color:var(--text-3);font-size:11px">① 根据：Google/Oxford 2021 论文，M5 时序预测竞赛前列，自带可解释性</p>
+<p style="margin:0 0 2px"><b>② 输入</b></p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">历史销量（店铺后台）+ 促销标签/折扣深度（商家后台活动配置）+ 城市天气（和风天气/OpenWeatherMap API）+ 节假日/大促日（人工维护大促日历表）+ 社媒搜索指数（Google Trends / 蝉妈妈 / 百度指数）</p>
+<p style="margin:0 0 2px"><b>③ 工具</b></p>
+<p style="margin:0 0 2px;color:var(--text-2);font-size:11px;font-weight:600">TFT 算法（Temporal Fusion Transformer）</p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">⚡ 零代码：AWS Forecast | Google Vertex AI | 阿里云 PAI</p>
+<p style="margin:0 0 2px"><b>④ 输出</b></p>
+<p style="margin:0;color:var(--text-2);font-size:11px">未来30天日级销量预测表</p>
+</div>
+
+<div>
+<p style="margin:0 0 4px;font-weight:700;color:var(--accent)">📊 分层预测 · 量级分策略</p>
+<p style="margin:0 0 6px;color:var(--text-3);font-size:11px">① 根据：零售行业通行做法，不同量级商品统计特性不同，需分层建模</p>
+<p style="margin:0 0 2px"><b>② 输入</b></p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">商品日均销量分层（店铺后台订单数据）：爆款（>100件/天）、腰部（10-100）、长尾（<10）</p>
+<p style="margin:0 0 2px"><b>③ 工具</b></p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">爆款：DeepAR | 腰部：LightGBM | 长尾：Croston 间歇加权评分公式</p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">⚡ 零代码：DeepAR → AWS Forecast &nbsp;|&nbsp; LightGBM → 阿里云 PAI / Azure AutoML &nbsp;|&nbsp; Croston → 需自写</p>
+<p style="margin:0 0 6px;color:var(--text-3);font-size:10px">均为专用时序预测算法，非语言大模型</p>
+<p style="margin:0 0 2px"><b>④ 输出</b></p>
+<p style="margin:0;color:var(--text-2);font-size:11px">爆款未来30天销量预测 / 腰部未来30天销量预测 / 长尾未来30天销量预测</p>
+</div>
+</div>
+
+</div>
+
+<div class="card" style="padding:14px 20px">
+<div class="grid g1" style="gap:8px;font-size:11px">
+<div>
+<p style="margin:0 0 4px;font-weight:700;color:var(--accent)">⚡ TFT · 算力 & 成本</p>
+<p style="margin:0;color:var(--text-2);line-height:1.7">算力：高 — 全量 SKU 训练，需 GPU<br>成本：贵 — 按训练时长 + 调用次数计费<br>适合：SKU 少、数据丰富、预算充足</p>
+</div>
+<div>
+<p style="margin:0 0 4px;font-weight:700;color:var(--accent)">💰 分层 · 算力 & 成本</p>
+<p style="margin:0;color:var(--text-2);line-height:1.7">算力：低 — 仅爆款用 DeepAR，其余轻量<br>成本：省 — 总成本约 TFT 的 20-30%<br>适合：SKU 多、长尾占比大、控预算</p>
+</div>
+</div>
+</div>
+
+
+<div class="deck-footer"><span>17 / 27</span></div>
+
+<div class="notes">左边TFT是单品精细预测，右边分层是全店策略。爆款用TFT日级精算，腰部用LightGBM周级够用，长尾用Croston判断会不会卖。好钢用在刀刃上——全店1000个SKU不用都上TFT。——它能同时处理销量、促销、天气、节假日等多种因素，输出未来30天的预测和置信区间。分层预测的关键：爆款要日粒度精细管理，长尾商品用间歇加权评分公式，不要一刀切。</div>
+
+</section>
+
+<section class="slide" data-title="智能库存管理">
+
+<p class="kicker">Category 03 · 库存管理</p>
+
+<h2 class="h2">SKU - 安全库存 + 多仓调拨 + 滞销预警</h2>
+
+<div class="mt-l anim-stagger-list" data-anim-target style="display:flex;flex-direction:column;gap:14px">
+
+<div class="grid g2" style="gap:10px;font-size:12px">
+
+<div class="card" style="padding:16px 20px">
+<p style="margin:0 0 6px;font-weight:700;color:var(--accent);font-size:14px">📦 安全库存动态计算</p>
+<p style="margin:0 0 2px;color:var(--text-3);font-size:11px">① 输入</p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">需求预测（上一页 TFT 输出），供应商历史交货天数，目标服务水平=98%</p>
+<p style="margin:0 0 2px;color:var(--text-3);font-size:11px">② 模型</p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">Monte Carlo 仿真：同时随机抽取历史需求 + 历史交货天数，仿真一万次 → 计算不同库存水平下的断货概率<br><span style="font-size:10px;color:var(--text-3)">⚡ @RISK / Oracle Crystal Ball（零代码）</span></p>
+<p style="margin:0 0 2px;color:var(--text-3);font-size:11px">③ 输出</p>
+<p style="margin:0;color:var(--text-2);font-size:11px">满足98% 不断货所需的最小安全库存量</p>
+</div>
+
+<div class="card" style="padding:16px 20px">
+<p style="margin:0 0 6px;font-weight:700;color:var(--accent);font-size:14px">🚚 多仓智能调拨</p>
+<p style="margin:0 0 2px;color:var(--text-3);font-size:11px">① 输入</p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">各仓当前库存 + 各区域需求预测（← 上一页 TFT 输出）+ 仓间运输成本</p>
+<p style="margin:0 0 2px;color:var(--text-3);font-size:11px">② 模型</p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">整数规划（Google OR-Tools）求解：运输成本 + 持有成本 + 缺货损失最小化<br><span style="font-size:10px;color:var(--text-3)">⚡ Gurobi / CPLEX（企业版）</span></p>
+<p style="margin:0 0 2px;color:var(--text-3);font-size:11px">③ 输出</p>
+<p style="margin:0;color:var(--text-2);font-size:11px">最优调拨方案：从哪仓调到哪仓、调多少</p>
+</div>
+
+</div>
+
+<div class="grid g1" style="gap:10px;font-size:12px">
+
+<div class="card" style="padding:16px 20px">
+<p style="margin:0 0 6px;font-weight:700;color:var(--accent);font-size:14px">🚨 滞销预警</p>
+<p style="margin:0 0 2px;color:var(--text-3);font-size:11px">① 输入</p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">商品库龄（入仓日期）+ 近30天销量趋势（店铺后台）+ 品类利润率（渠道毛利率）</p>
+<p style="margin:0 0 2px;color:var(--text-3);font-size:11px">② 模型</p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">规则引擎综合判断：库龄(30/60/90天) + 销量趋势(是否还在走量) + 利润率(薄利/厚利) → 黄/橙/红三级预警<br><span style="font-size:10px;color:var(--text-3)">⚡ 旺店通 / 聚水潭（ERP 内置）</span></p>
+<p style="margin:0 0 2px;color:var(--text-3);font-size:11px">③ 输出</p>
+<p style="margin:0;color:var(--text-2);font-size:11px">预警等级</p>
+</div>
+
+
+
+</div>
+
+</div>
+
+<div class="deck-footer"><span>20 / 27</span></div>
+
+<div class="notes">库存管理的四个核心：Monte Carlo仿真定安全库存；整数规划解决多仓调拨；规则引擎做滞销预警；GPT-4o辅助出清仓方案。</div>
+
+</section>
+
+<section class="slide" data-title="供应链工具现状">
+
+<p class="kicker">Category 03 · 工具现状</p>
+
+<h2 class="h2">有没有现成的全自动工具？</h2>
+
+<div class="grid g2 mt-m" style="gap:10px">
+
+<div class="card" style="padding:14px 18px;background:var(--good-bg);border:1px solid var(--good)">
+<h4 style="margin:0 0 6px;color:var(--good)">✅ 大型品牌/平台（已打通）</h4>
+<div style="font-size:12px;line-height:1.6;color:var(--text-2)">
+
+<p style="margin:0 0 6px"><b>SAP</b><span style="color:var(--text-3);font-size:10px">（厂商）</span> · <b>S/4HANA + IBP</b><span style="color:var(--text-3);font-size:10px">（产品）</span><br>安全库存（自研 Monte Carlo）+ 多仓调拨（自研整数规划）+ 库龄预警（规则引擎）<br><span style="color:var(--text-3);font-size:10px">三模块内部 API 打通，百万起/年，6~18个月部署</span></p>
+
+<p style="margin:0 0 6px"><b>Microsoft</b><span style="color:var(--text-3);font-size:10px">（厂商）</span> · <b>Dynamics 365 SCM</b><span style="color:var(--text-3);font-size:10px">（产品）</span><br>同上，Azure 云原生，几十万起/年</p>
+
+
+
+</div>
+</div>
+
+<div class="card" style="padding:14px 18px">
+<h4 style="margin:0 0 6px;color:var(--warn, #e67e22)">⚠️ 中小卖家（功能一体，算法简化）</h4>
+<div style="font-size:12px;line-height:1.6;color:var(--text-2)">
+
+<p style="margin:0 0 6px"><b>旺店通 / 聚水潭 / 慧策</b><br>三步都有，但算法精度不同：<br><span style="color:var(--text-3);font-size:10px">安全库存 = 日均销量 × 交期 × 系数（非 Monte Carlo）<br>调拨 = 人工规则（非整数规划）<br>滔销预警 = 规则引擎（能做）</span></p>
+
+
+
+</div>
+</div>
+
+</div>
+
+
+
+<div class="deck-footer"><span>21 / 27</span></div>
+
+</section>
+
 
   <!-- ===== 14. 内容与文档生成 ===== -->
   <section class="slide" data-title="内容与文档生成">
     <p class="kicker">Category 04</p>
     <h2 class="h2">📝 内容与文档生成</h2>
-    <p class="dim" style="margin-bottom:20px">从投标书到检测报告，从营销文案到设计方案，AI 自动生成各类专业文档</p>
-    <div class="grid g2 mt-m" style="gap:20px">
-      <div class="card" style="padding:20px">
-        <div class="accent-bar purple"></div>
-        <h4 style="margin:0 0 10px">📄 专业文档生成</h4>
-        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
-          <li>投标书 / 技术方案自动生成：输入参数 → 完整方案文档</li>
-          <li>检测报告 / 产品说明书自动编写</li>
-          <li>咨询报告 / 行业分析一键生成</li>
-        </ul>
+    <p class="dim" style="margin-bottom:16px">文字内容模板化生成 + 图片/视频 AI 创建，两条线覆盖企业内容需求</p>
+    <div style="display:flex;flex-direction:column;gap:10px;max-width:800px;margin:0 auto">
+      <div class="card pain-card">
+        <div class="emoji">📄</div>
+        <div>
+          <h5 style="margin:0 0 4px">文字内容生成（模板驱动）</h5>
+          <p class="dim" style="font-size:13px;margin:0">投标书 / 技术方案：输入参数 → 完整文档，套用企业模板。<br>检测报告 / 产品说明书：标准化模板自动填充。<br>电商文案：商品标题 + 详情页一键生成，多平台适配。<br>咨询报告 / 行业分析：自动编写。</p>
+        </div>
       </div>
-      <div class="card" style="padding:20px">
-        <div class="accent-bar cyan"></div>
-        <h4 style="margin:0 0 10px">🎨 营销与设计内容</h4>
-        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
-          <li>商品标题+详情页文案 AI 生成（电商多平台适配）</li>
-          <li>设计方案描述文档自动输出</li>
-          <li>家族资产分析报告 / 财富管理建议书生成</li>
-        </ul>
+      <div class="card pain-card">
+        <div class="emoji">🎬</div>
+        <div>
+          <h5 style="margin:0 0 4px">图片 / 视频内容生成</h5>
+          <p class="dim" style="font-size:13px;margin:0">AI 商品图：白底图 → 场景图，多平台尺寸自适应。<br>AI 视频：商品展示视频、营销短视频快速生成。<br>设计素材：海报、Banner、社媒配图。</p>
+        </div>
       </div>
     </div>
-    <div class="notes">内容生成是覆盖企业最广的能力之一。适用：泰开变压器（投标书）、五岳电器（说明书）、彦诚（咨询报告）、瑞信达（方案书）、睿居品（设计说明）、渔我同乐（电商文案）。</div>
+    <div class="notes">内容生成分两类：文字内容依赖模板驱动（投标书、报告、文案），图片/视频依赖 AI 生成模型（商品图、短视频、设计素材）。</div>
   </section>
+  <!-- ===== ?????? ? ???? ===== -->
+  <section class="slide" data-title="文字内容生成·模板驱动">
+    <p class="kicker">Category 04 · 文字内容</p>
+    <h2 class="h2">📝 检索模板 + 输入参数 + LLM</h2>
+    <p class="dim" style="margin-bottom:20px">UI收集参数，RAG检索模板，LLM融合两者按提示词生成专业文档</p>
+    
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:20px 0 30px;flex-wrap:wrap">
+      <div style="background:var(--surface);border:2px solid var(--accent-2);border-radius:12px;padding:18px 22px;text-align:center;min-width:130px">
+        <div style="font-size:32px;margin-bottom:6px">✏️</div>
+        <div style="font-weight:700;color:var(--accent-2);font-size:14px;margin-bottom:2px">UI 参数输入</div>
+        <div style="font-size:11px;color:var(--text-3)">项目名·数据·要求</div>
+      </div>
+      <div style="font-size:22px;color:var(--text-3)">→</div>
+      <div style="background:var(--surface);border:2px solid var(--accent);border-radius:12px;padding:18px 22px;text-align:center;min-width:130px">
+        <div style="font-size:32px;margin-bottom:6px">📋</div>
+        <div style="font-weight:700;color:var(--accent);font-size:14px;margin-bottom:2px">RAG 模板检索</div>
+        <div style="font-size:11px;color:var(--text-3)">模板库语义匹配</div>
+      </div>
+      <div style="font-size:22px;color:var(--text-3)">→</div>
+      <div style="background:var(--surface);border:2px solid var(--good);border-radius:12px;padding:18px 22px;text-align:center;min-width:130px">
+        <div style="font-size:32px;margin-bottom:6px">🤖</div>
+        <div style="font-weight:700;color:var(--good);font-size:14px;margin-bottom:2px">LLM 融合生成</div>
+        <div style="font-size:11px;color:var(--text-3)">模板+参数→内容</div>
+      </div>
+      <div style="font-size:22px;color:var(--text-3)">→</div>
+      <div style="background:var(--good-bg);border:2px solid var(--good);border-radius:12px;padding:18px 22px;text-align:center;min-width:130px">
+        <div style="font-size:32px;margin-bottom:6px">📄</div>
+        <div style="font-weight:700;color:var(--good);font-size:14px;margin-bottom:2px">提示词输出</div>
+        <div style="font-size:11px;color:var(--text-3)">完整专业文档</div>
+      </div>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;max-width:800px;margin:0 auto">
+      <div class="card pain-card">
+        <div class="emoji">📦</div>
+        <div>
+          <h5 style="margin:0 0 4px">典型场景</h5>
+          <p class="dim" style="font-size:13px;margin:0">投标书：UI输入项目参数 → RAG检索投标书模板 → LLM生成完整标书<br>检测报告：UI填写检测数据 → RAG匹配报告模板 → LLM自动生成<br>电商文案：UI提供商品信息 → RAG找到品类模板 → LLM多平台适配输出</p>
+        </div>
+      </div>
+      <div class="card pain-card">
+        <div class="emoji">📌</div>
+        <div>
+          <h5 style="margin:0 0 4px">关键要点</h5>
+          <p class="dim" style="font-size:13px;margin:0">① UI收集用户关键参数，触发流程。<br>② RAG从模板库中检索最匹配的模板。<br>③ LLM融合“RAG模板 + UI参数”按提示词生成文档，不胡编乱造。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="notes">模板驱动的文字内容生成流程：UI参数输入 → RAG检索模板 → LLM融合生成 → 提示词控制输出。</div>
+  </section>
+
 
   <!-- ===== 15. 智能客服与沟通 ===== -->
   <section class="slide" data-title="智能客服与沟通">
