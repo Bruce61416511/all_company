@@ -480,6 +480,37 @@
     </div>
     <div class="notes">DocMind 是 RAG 技术落地实战 Demo。完整流程：文档上传 - 内容提取 - 智能切片 - SQLite 存储 - jieba+TF-IDF 检索 - 召回 Top-3 片段 - LLM 生成回答。全离线运行，无需外部 API。</div>
   </section>
+  <!-- ===== 13. 多模态RAG ===== -->
+  <section class="slide" data-title="多模态RAG">
+    <p class="kicker">Category 02 . 多模态</p>
+    <h2 class="h2">🖼️ 图片 / 视频 的 RAG 如何制作？</h2>
+    <p class="dim" style="margin-bottom:16px">传统 RAG 只处理文字，多模态 RAG 让图片、视频也可检索和问答</p>
+    <div style="display:flex;flex-direction:column;gap:10px;max-width:800px;margin:0 auto">
+      <div class="card pain-card">
+        <div class="emoji">📷</div>
+        <div>
+          <h5 style="margin:0 0 4px">图片 → 三种理解路径</h5>
+          <p class="dim" style="font-size:13px;margin:0">OCR（光学字符识别）：扫描件、证照等直接提取文字存储。<br>CLIP 向量嵌入：产品图、设计图生成向量，支持“以图搜图”“文字搜图”。<br>多模态 LLM：GPT-4o / Qwen-VL 深度理解图片内容，支持看图问答与自动标注。</p>
+        </div>
+      </div>
+      <div class="card pain-card">
+        <div class="emoji">🎬</div>
+        <div>
+          <h5 style="margin:0 0 4px">视频 → 抽帧（图片）+ 语音转写（文本）+ 时间戳</h5>
+          <p class="dim" style="font-size:13px;margin:0">每 2-3 秒抽一帧→走图片管线（OCR/CLIP/多模态 LLM）。<br>同时 Whisper 转写音频为文字。<br>时间戳将帧与文字绑定，检索时可精确跳转到视频对应秒数。</p>
+        </div>
+      </div>
+      <div class="card pain-card">
+        <div class="emoji">🔄</div>
+        <div>
+          <h5 style="margin:0 0 4px">依赖大模型实际流程</h5>
+          <p class="dim" style="font-size:13px;margin:0">图片/视频 → 多模态LLM理解 → 切片存储 → 用户提问 → 混合检索 → 多模态 LLM 生成回答 → 回答中引用图片/视频片段</p>
+        </div>
+      </div>
+    </div>
+    <div class="notes">多模态 RAG 扩展了传统 RAG 的能力边界。关键技术：OCR（光学字符识别）、CLIP多模态嵌入、Whisper语音转写、多模态LLM。适用场景：产品手册中的图表检索、培训视频知识库、设备故障照片诊断等。</div>
+  </section>
+
 
   <!-- ===== 13. 预测分析与决策支持 ===== -->
   <section class="slide" data-title="预测分析与决策支持">
