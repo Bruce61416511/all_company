@@ -710,7 +710,7 @@
         <div class="emoji">📄</div>
         <div>
           <h5 style="margin:0 0 4px">文字内容生成（模板驱动）</h5>
-          <p class="dim" style="font-size:13px;margin:0">投标书 / 技术方案：输入参数 → 完整文档，套用企业模板。<br>检测报告 / 产品说明书：标准化模板自动填充。<br>电商文案：商品标题 + 详情页一键生成，多平台适配。<br>咨询报告 / 行业分析：自动编写。</p>
+          <p class="dim" style="font-size:13px;margin:0">投标书 / 技术方案：输入参数 → 完整文档，套用企业模板。<br>检测报告 / 产品说明书：标准化模板自动填充。<br>电商文案：商品标题 + 详情页一键生成，多平台适配。<br>咨询报告 / 行业分析：自动编写。<br>开发信：输入客户+产品+语言 → LLM生成外贸开发信，支持 6 种语言。</p>
         </div>
       </div>
       <div class="card pain-card">
@@ -719,8 +719,12 @@
           <h5 style="margin:0 0 4px">图片 / 视频内容生成</h5>
           <p class="dim" style="font-size:13px;margin:0">AI 商品图：白底图 → 场景图，多平台尺寸自适应。<br>AI 视频：商品展示视频、营销短视频快速生成。<br>设计素材：海报、Banner、社媒配图。</p>
         </div>
-      </div>
+      
+</div>
     </div>
+    
+
+
     <div class="notes">内容生成分两类：文字内容依赖模板驱动（投标书、报告、文案），图片/视频依赖 AI 生成模型（商品图、短视频、设计素材）。</div>
   </section>
   <!-- ===== ?????? ? ???? ===== -->
@@ -729,51 +733,229 @@
     <h2 class="h2">📝 检索模板 + 输入参数 + LLM</h2>
     <p class="dim" style="margin-bottom:20px">UI收集参数，RAG检索模板，LLM融合两者按提示词生成专业文档</p>
     
-    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:20px 0 30px;flex-wrap:wrap">
-      <div style="background:var(--surface);border:2px solid var(--accent-2);border-radius:12px;padding:18px 22px;text-align:center;min-width:130px">
-        <div style="font-size:32px;margin-bottom:6px">✏️</div>
-        <div style="font-weight:700;color:var(--accent-2);font-size:14px;margin-bottom:2px">UI 参数输入</div>
-        <div style="font-size:11px;color:var(--text-3)">项目名·数据·要求</div>
+    <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin:20px 0 24px;flex-wrap:wrap">
+      <div style="background:var(--surface);border:2px solid var(--accent-2);border-radius:12px;padding:16px 20px;text-align:center;min-width:120px">
+        <div style="font-size:28px;margin-bottom:4px">✏️</div>
+        <div style="font-weight:700;color:var(--accent-2);font-size:13px">UI 参数输入</div>
       </div>
-      <div style="font-size:22px;color:var(--text-3)">→</div>
-      <div style="background:var(--surface);border:2px solid var(--accent);border-radius:12px;padding:18px 22px;text-align:center;min-width:130px">
-        <div style="font-size:32px;margin-bottom:6px">📋</div>
-        <div style="font-weight:700;color:var(--accent);font-size:14px;margin-bottom:2px">RAG 模板检索</div>
-        <div style="font-size:11px;color:var(--text-3)">模板库语义匹配</div>
+      <div style="font-size:20px;color:var(--text-3)">→</div>
+      <div style="background:var(--surface);border:2px solid var(--accent);border-radius:12px;padding:16px 20px;text-align:center;min-width:120px">
+        <div style="font-size:28px;margin-bottom:4px">📋</div>
+        <div style="font-weight:700;color:var(--accent);font-size:13px">RAG 模板检索</div>
       </div>
-      <div style="font-size:22px;color:var(--text-3)">→</div>
-      <div style="background:var(--surface);border:2px solid var(--good);border-radius:12px;padding:18px 22px;text-align:center;min-width:130px">
-        <div style="font-size:32px;margin-bottom:6px">🤖</div>
-        <div style="font-weight:700;color:var(--good);font-size:14px;margin-bottom:2px">LLM 融合生成</div>
-        <div style="font-size:11px;color:var(--text-3)">模板+参数→内容</div>
+      <div style="font-size:20px;color:var(--text-3)">→</div>
+      <div style="background:var(--surface);border:2px solid var(--good);border-radius:12px;padding:16px 20px;text-align:center;min-width:120px">
+        <div style="font-size:28px;margin-bottom:4px">🤖</div>
+        <div style="font-weight:700;color:var(--good);font-size:13px">LLM 融合生成</div>
       </div>
-      <div style="font-size:22px;color:var(--text-3)">→</div>
-      <div style="background:var(--good-bg);border:2px solid var(--good);border-radius:12px;padding:18px 22px;text-align:center;min-width:130px">
-        <div style="font-size:32px;margin-bottom:6px">📄</div>
-        <div style="font-weight:700;color:var(--good);font-size:14px;margin-bottom:2px">提示词输出</div>
-        <div style="font-size:11px;color:var(--text-3)">完整专业文档</div>
+      <div style="font-size:20px;color:var(--text-3)">→</div>
+      <div style="background:var(--good-bg);border:2px solid var(--good);border-radius:12px;padding:16px 20px;text-align:center;min-width:120px">
+        <div style="font-size:28px;margin-bottom:4px">📄</div>
+        <div style="font-weight:700;color:var(--good);font-size:13px">提示词输出</div>
       </div>
     </div>
 
-    <div style="display:flex;flex-direction:column;gap:10px;max-width:800px;margin:0 auto">
-      <div class="card pain-card">
-        <div class="emoji">📦</div>
-        <div>
-          <h5 style="margin:0 0 4px">典型场景</h5>
-          <p class="dim" style="font-size:13px;margin:0">投标书：UI输入项目参数 → RAG检索投标书模板 → LLM生成完整标书<br>检测报告：UI填写检测数据 → RAG匹配报告模板 → LLM自动生成<br>电商文案：UI提供商品信息 → RAG找到品类模板 → LLM多平台适配输出</p>
+    <div style="max-width:800px;margin:0 auto">
+      <div class="grid g2" style="gap:10px;margin-bottom:10px">
+        <div class="card pain-card">
+          <div class="emoji">📦</div>
+          <div>
+            <h5 style="margin:0 0 4px">典型场景</h5>
+            <p class="dim" style="font-size:13px;margin:0">投标书：UI输入项目参数 → RAG检索投标书模板 → LLM生成完整标书<br>检测报告：UI填写检测数据 → RAG匹配报告模板 → LLM自动生成<br>电商文案：UI提供商品信息 → RAG找到品类模板 → LLM多平台适配输出</p>
+          </div>
+        </div>
+        <div class="card pain-card">
+          <div class="emoji">📌</div>
+          <div>
+            <h5 style="margin:0 0 4px">关键要点</h5>
+            <p class="dim" style="font-size:13px;margin:0">① UI收集用户关键参数，触发流程。<br>② RAG从模板库中检索最匹配的模板。<br>③ LLM融合“RAG模板 + UI参数”按提示词生成文档，不胡编乱造。</p>
+          </div>
         </div>
       </div>
       <div class="card pain-card">
-        <div class="emoji">📌</div>
+        <div class="emoji">📧</div>
         <div>
-          <h5 style="margin:0 0 4px">关键要点</h5>
-          <p class="dim" style="font-size:13px;margin:0">① UI收集用户关键参数，触发流程。<br>② RAG从模板库中检索最匹配的模板。<br>③ LLM融合“RAG模板 + UI参数”按提示词生成文档，不胡编乱造。</p>
+          <h5 style="margin:0 0 4px">实例：开发信智能生成</h5>
+          <p class="dim" style="font-size:13px;margin:0">UI输入客户名称、公司、产品、语言 → RAG检索企业模板 → LLM生成外贸开发信。<br>支持中、英、西、法、阿、俄 6 种语言，企业背景自动套用。</p>
         </div>
       </div>
     </div>
 
     <div class="notes">模板驱动的文字内容生成流程：UI参数输入 → RAG检索模板 → LLM融合生成 → 提示词控制输出。</div>
   </section>
+
+<section class="slide" data-title="Dreamina 即梦">
+    <p class="kicker">Category 04</p>
+    <h2 class="h2">Dreamina（即梦）</h2>
+    <a href="https://www.dreamina.com/" target="_blank" class="pill-tag" style="margin-left:12px;text-decoration:none;">dreamina.com &#x2197;</a>
+    <p class="dim" style="margin-bottom:18px;">原创素材生成 — 出原图 / 原视频，支持 1:1 · 3:4 · 4:3 · 9:16 · 16:9 等比例，支持 2K / 4K</p>
+    <div class="grid g3" style="gap:14px;">
+      <div class="card" style="padding:20px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">&#x1F5BC;</div>
+        <h5>图片生成</h5>
+        <p class="dim2" style="font-size:11px;">文生图 / 图生图</p>
+      </div>
+      <div class="card" style="padding:20px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">&#x1F3AC;</div>
+        <h5>视频生成</h5>
+        <p class="dim2" style="font-size:11px;">文生视频 / 图生视频</p>
+      </div>
+      <div class="card" style="padding:20px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">&#x1F3A8;</div>
+        <h5>智能画布</h5>
+        <p class="dim2" style="font-size:11px;">扩图 · 消除 · 局部重绘</p>
+      </div>
+    </div>
+    <div style="display:flex;gap:14px;margin-top:14px;">
+      <div class="card" style="flex:1;padding:20px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">&#x1F9D1;</div>
+        <h5>数字人</h5>
+        <p class="dim2" style="font-size:11px;">虚拟形象 + 口播驱动</p>
+      </div>
+      <div class="card" style="flex:1;padding:20px;text-align:center;">
+        <div style="font-size:28px;margin-bottom:6px;">&#x1F399;</div>
+        <h5>配音生成</h5>
+        <p class="dim2" style="font-size:11px;">TTS 文字转语音 · 多音色</p>
+      </div>
+    </div>
+    <div class="notes">即梦是字节系的产品，中文理解好，特别适合国内电商。六个核心功能：图片生成、视频生成、智能画布、数字人、模特换装、云端协作。以前拍一套商品图要几天，现在几分钟。</div>
+  </section>
+
+<section class="slide" data-title="Canva 可画">
+    <p class="kicker">Category 04</p>
+    <h2 class="h2">Canva（可画）</h2>
+    <a href="https://www.canva.cn/" target="_blank" class="pill-tag" style="margin-left:12px;text-decoration:none;">canva.cn &#x2197;</a>
+    <p class="dim" style="margin-bottom:18px;">一站式电商视觉内容设计 — 覆盖小红书 · 微信 · B站 · 抖音等全平台模板</p>
+    <div class="grid g3" style="gap:14px;margin-bottom:4px;">
+      <div class="card" style="padding:16px;text-align:center;">
+        <div style="font-size:26px;margin-bottom:4px;">&#x1F4CB;</div>
+        <h5>海量模板</h5>
+        <p class="dim2" style="font-size:11px;">海报 · 详情页 · Banner · 社媒</p>
+      </div>
+      <div class="card" style="padding:16px;text-align:center;">
+        <div style="font-size:26px;margin-bottom:4px;">&#x1F3A8;</div>
+        <h5>拖拽式编辑</h5>
+        <p class="dim2" style="font-size:11px;">图 + 文案 + Logo 拼成成品图</p>
+      </div>
+      <div class="card" style="padding:16px;text-align:center;">
+        <div style="font-size:26px;margin-bottom:4px;">&#x1F3F7;</div>
+        <h5>品牌套件</h5>
+        <p class="dim2" style="font-size:11px;">Logo + 色板 + 字体一键套用</p>
+      </div>
+    </div>
+    <div class="grid g3" style="gap:14px;">
+      <div class="card" style="padding:16px;text-align:center;">
+        <div style="font-size:26px;margin-bottom:4px;">&#x2702;</div>
+        <h5>一键抠图</h5>
+        <p class="dim2" style="font-size:11px;">AI 去背景，替代 PS 钢笔工具</p>
+      </div>
+      <div class="card" style="padding:16px;text-align:center;">
+        <div style="font-size:26px;margin-bottom:4px;">&#x1F4E6;</div>
+        <h5>批量创作</h5>
+        <p class="dim2" style="font-size:11px;">CSV 导入数据，批量生成变体</p>
+      </div>
+      <div class="card" style="padding:16px;text-align:center;">
+        <div style="font-size:26px;margin-bottom:4px;">&#x1F91D;</div>
+        <h5>团队协作</h5>
+        <p class="dim2" style="font-size:11px;">多人实时编辑，评论审批</p>
+      </div>
+    </div>
+    <div class="notes">Canva 替代的是 PS 80% 的电商日常操作：模板排版、拖拽式编辑、一键抠图、品牌套件。运营自己就能出图，不用等设计师。</div>
+  </section>
+
+<section class="slide" data-title="Kuaizi 筷子科技">
+    <p class="kicker">Category 04</p>
+    <h2 class="h2">Kuaizi（筷子科技）</h2>
+    <a href="https://kuaizi.cn/" target="_blank" class="pill-tag" style="margin-left:12px;text-decoration:none;">kuaizi.cn &#x2197;</a>
+    <p class="dim" style="margin-bottom:18px;">创意生产 + 一键投放，打通内容到投放全链路</p>
+    <p class="dim2" style="font-size:11px;margin-bottom:8px;">&#x1F3AC; 内容生产</p>
+    <div class="grid g3" style="gap:14px;margin-bottom:12px;">
+      <div class="card" style="padding:16px;text-align:center;">
+        <div style="font-size:26px;margin-bottom:4px;">&#x1F500;</div>
+        <h5>程序化创意</h5>
+        <p class="dim2" style="font-size:11px;">上传素材+文案，AI 裂变数百条视频变体</p>
+      </div>
+      <div class="card" style="padding:16px;text-align:center;">
+        <div style="font-size:26px;margin-bottom:4px;">&#x2702;</div>
+        <h5>智能混剪</h5>
+        <p class="dim2" style="font-size:11px;">多素材自动组合最优方案，配乐卡点</p>
+      </div>
+      <div class="card" style="padding:16px;text-align:center;">
+        <div style="font-size:26px;margin-bottom:4px;">&#x1F399;</div>
+        <h5>AI 配音+字幕</h5>
+        <p class="dim2" style="font-size:11px;">真人级 TTS 多音色 + 自动字幕</p>
+      </div>
+    </div>
+    <div style="background:var(--grad-soft);border-radius:var(--radius-lg);padding:16px 20px;margin-bottom:4px;">
+      <p class="dim2" style="font-size:11px;margin-bottom:6px;">&#x1F680; 投放 &amp; 分发</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <span class="pill-tag" style="background:#FFF7ED;color:#EA580C;font-size:13px;">巨量引擎（抖音）</span>
+        <span class="pill-tag" style="background:#FEF2F2;color:#DC2626;font-size:13px;">磁力引擎（快手）</span>
+        <span class="pill-tag" style="background:#EFF6FF;color:#2563EB;font-size:13px;">腾讯广告</span>
+        <span class="pill-tag" style="background:#F0FDF4;color:#16A34A;font-size:13px;">TikTok</span>
+        <span class="pill-tag" style="background:#F5F3FF;color:#7C3AED;font-size:13px;">视频号</span>
+      </div>
+    </div>
+    <div class="notes">筷子科技最大的亮点：生产完直接一键投到巨量引擎、磁力引擎、腾讯广告、TikTok、视频号。数据跑出来再回传优化，形成闭环。一个剪辑师一天做 3 条，AI 一小时出 100 条投 5 个平台。</div>
+  </section>
+
+<section class="slide" data-title="内容模型">
+    <p class="kicker">Category 04 · 内容模型</p>
+    <h2 class="h2">想自己搓内容 Agent？先认识这些模型</h2>
+    <p class="dim" style="margin-bottom:14px;">Dreamina / Canva / Kuaizi 是手动挡，底层的"引擎"长这样</p>
+    <div class="grid g2" style="gap:14px;margin-bottom:4px;">
+      <div class="card" style="padding:16px;">
+        <p class="dim2" style="font-size:10px;color:var(--accent-2);margin-bottom:4px;">&#x1F5BC;&#xFE0F; 图片生成</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span class="pill-tag" style="font-size:10px;">Stable Diffusion</span>
+          <span class="pill-tag" style="font-size:10px;">Flux Dev</span>
+          <span class="pill-tag" style="font-size:10px;">Midjourney</span>
+          <span class="pill-tag" style="font-size:10px;">DALL&#xB7;E 3</span>
+          <span class="pill-tag" style="font-size:10px;">通义万相</span>
+        </div>
+      </div>
+      <div class="card" style="padding:16px;">
+        <p class="dim2" style="font-size:10px;color:var(--accent-2);margin-bottom:4px;">&#x1F3AC; 视频生成</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span class="pill-tag" style="font-size:10px;">可灵 Kling</span>
+          <span class="pill-tag" style="font-size:10px;">Runway Gen-3</span>
+          <span class="pill-tag" style="font-size:10px;">Sora</span>
+          <span class="pill-tag" style="font-size:10px;">Pika</span>
+          <span class="pill-tag" style="font-size:10px;">CogVideoX</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid g2" style="gap:14px;margin-bottom:4px;">
+      <div class="card" style="padding:16px;">
+        <p class="dim2" style="font-size:10px;color:var(--accent-2);margin-bottom:4px;">&#x1F3A8; 控制 &amp; 工作流</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span class="pill-tag" style="font-size:10px;">ComfyUI</span>
+          <span class="pill-tag" style="font-size:10px;">LoRA</span>
+          <span class="pill-tag" style="font-size:10px;">ControlNet</span>
+          <span class="pill-tag" style="font-size:10px;">IP-Adapter</span>
+        </div>
+      </div>
+      <div class="card" style="padding:16px;">
+        <p class="dim2" style="font-size:10px;color:var(--accent-2);margin-bottom:4px;">&#x1F5E3;&#xFE0F; 语音 &amp; 播报</p>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <span class="pill-tag" style="font-size:10px;">CosyVoice</span>
+          <span class="pill-tag" style="font-size:10px;">Fish Audio</span>
+          <span class="pill-tag" style="font-size:10px;">GPT-SoVITS</span>
+          <span class="pill-tag" style="font-size:10px;">Edge TTS</span>
+        </div>
+      </div>
+    </div>
+    <div class="card" style="padding:16px;background:var(--grad-soft);margin-top:4px;">
+      <p class="dim2" style="font-size:11px;margin-bottom:4px;">&#x1F4A1; 这些模型能做什么</p>
+      <p class="dim" style="font-size:12px;">
+        <strong>图片</strong>：商品图 / 模特 / 场景批量生成 &#xB7; <strong>视频</strong>：口播 / 混剪素材 / 动态展示 &#xB7; 
+        <strong>语音</strong>：配音 / 数字人播报 &#xB7; <strong>控制</strong>：换脸 / 风格迁移 / 精细控制出图
+      </p>
+    </div>
+    <div class="notes">如果你不用 Dreamina / Canva / Kuaizi 这些成品工具，想自己手搓内容 Agent，就得了解这些底层模型。图片、视频、语音、控制——四个维度各有一批主流模型可选。</div>
+  </section>
+
+
 
 
   <!-- ===== 15. 智能客服与沟通 ===== -->
@@ -804,6 +986,107 @@
     </div>
     <div class="notes">智能客服的核心是 LLM + Function Calling + RAG 三者结合。关键在于人工兜底设计：AI 解决 80% 常见问题，复杂问题无缝转接人工。</div>
   </section>
+
+<section class="slide" data-title="多轮对话引擎">
+
+<p class="kicker">Category 05 · 对话引擎</p>
+
+<h2 class="h2">从"关键词匹配"到"📋大模型对话引擎"</h2>
+
+<div class="mt-m" style="display:flex;align-items:stretch;gap:6px">
+
+<div class="card" style="flex:1;text-align:center;padding:14px 8px;min-width:0">
+<div style="font-size:28px;margin-bottom:4px">📥</div>
+<div style="font-size:11px;font-weight:700;color:var(--text-1);margin-bottom:2px">多模态输入</div>
+<div style="font-size:10px;color:var(--text-3);line-height:1.4">文字 / 语音<br>图片</div>
+<div style="font-size:10px;color:var(--text-3);margin-top:3px">Whisper · GPT-4V</div>
+</div>
+
+<div style="display:flex;align-items:center;color:var(--accent);font-size:20px;font-weight:700;flex-shrink:0">→</div>
+
+<div class="card" style="flex:1;text-align:center;padding:14px 8px;min-width:0">
+<div style="font-size:28px;margin-bottom:4px">🏷️</div>
+<div style="font-size:11px;font-weight:700;color:var(--text-1);margin-bottom:2px">意图识别</div>
+<div style="font-size:10px;color:var(--text-3);line-height:1.4">26类意图分类<br>自动抽取关键信息</div>
+<div style="font-size:10px;color:var(--text-3);margin-top:3px">订单号·商品名·日期·金额</div>
+</div>
+
+<div style="display:flex;align-items:center;color:var(--accent);font-size:20px;font-weight:700;flex-shrink:0">→</div>
+
+<div class="card" style="flex:1;text-align:center;padding:14px 8px;min-width:0">
+<div style="font-size:28px;margin-bottom:4px">🔍</div>
+<div style="font-size:11px;font-weight:700;color:var(--text-1);margin-bottom:2px">知识检索</div>
+<div style="font-size:10px;color:var(--text-3);line-height:1.4">语义向量匹配<br>知识库精准召回</div>
+<div style="font-size:10px;color:var(--text-3);margin-top:3px">BGE-M3 · RAG</div>
+</div>
+
+<div style="display:flex;align-items:center;color:var(--accent);font-size:20px;font-weight:700;flex-shrink:0">→</div>
+
+<div class="card" style="flex:1;text-align:center;padding:14px 8px;min-width:0">
+<div style="font-size:28px;margin-bottom:4px">🧠</div>
+<div style="font-size:11px;font-weight:700;color:var(--text-1);margin-bottom:2px">大模型推理</div>
+<div style="font-size:10px;color:var(--text-3);line-height:1.4">生成回答<br>调用业务系统</div>
+<div style="font-size:10px;color:var(--text-3);margin-top:3px">GPT-4o · Function Calling</div>
+</div>
+
+<div style="display:flex;align-items:center;color:var(--accent);font-size:20px;font-weight:700;flex-shrink:0">→</div>
+
+<div class="card" style="flex:1;text-align:center;padding:14px 8px;min-width:0">
+<div style="font-size:28px;margin-bottom:4px">📤</div>
+<div style="font-size:11px;font-weight:700;color:var(--text-1);margin-bottom:2px">多模态回复</div>
+<div style="font-size:10px;color:var(--text-3);line-height:1.4">文字 / 语音<br>最终确认</div>
+<div style="font-size:10px;color:var(--text-3);margin-top:3px">CosyVoice TTS</div>
+</div>
+
+</div>
+
+</section>
+
+<section class="slide" data-title="智能客服工具">
+
+<p class="kicker">Category 05 · 工具选型</p>
+
+<h2 class="h2">现成的 AI 客服怎么选？</h2>
+
+<div class="grid g2 mt-m" style="gap:10px">
+
+<div class="card" style="padding:14px 18px;background:var(--good-bg);border:1px solid var(--good)">
+<h4 style="margin:0 0 6px;color:var(--good)">✅ 大型品牌/平台</h4>
+<div style="font-size:12px;line-height:1.6;color:var(--text-2)">
+
+<p style="margin:0 0 6px"><b>Salesforce</b><span style="color:var(--text-3);font-size:10px">（厂商）</span> · <b>Einstein GPT</b><span style="color:var(--text-3);font-size:10px">（产品）</span><br>CRM 内生 AI 客服，自动化工单、意图路由，年费百万起</p>
+
+<p style="margin:0 0 6px"><b>Zendesk</b><span style="color:var(--text-3);font-size:10px">（厂商）</span> · <b>Zendesk AI</b><span style="color:var(--text-3);font-size:10px">（产品）</span><br>智能工单分类 + 自动回复 + 知识库建议，年费几十万起</p>
+
+<p style="margin:0"><b>Intercom</b><span style="color:var(--text-3);font-size:10px">（厂商）</span> · <b>Fin AI Agent</b><span style="color:var(--text-3);font-size:10px">（产品）</span><br>GPT-4o 驱动，直接回答用户问题，无需人工配置话术</p>
+
+</div>
+</div>
+
+<div class="card" style="padding:14px 18px">
+<h4 style="margin:0 0 6px;color:var(--warn, #e67e22)">⚠️ 中小卖家（国内电商）</h4>
+<div style="font-size:12px;line-height:1.6;color:var(--text-2)">
+
+<p style="margin:0 0 6px"><b>店小蜜</b>（阿里官方 · 淘宝/天猫内置）<br>关键词匹配 + LLM 增强，免费基础版，专业版数千/年</p>
+
+<p style="margin:0 0 6px"><b>智齿科技</b> · 智能客服机器人<br>多平台接入，意图识别 + 知识库，数千~数万/年</p>
+
+<p style="margin:0"><b>网易七鱼</b> · 在线客服 + AI 机器人<br>全渠道覆盖，大模型问答，数万/年起</p>
+
+</div>
+</div>
+
+</div>
+
+<div class="deck-footer"><span class="dim2">AI智能客服</span><span>23 / 25</span></div>
+
+</section>
+
+
+
+
+
+
 
   <!-- ===== 16. 安全合规 ===== -->
   <section class="slide" data-title="安全合规">
