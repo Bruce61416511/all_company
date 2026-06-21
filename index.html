@@ -775,7 +775,7 @@
           <p style="margin:0 0 2px"><b>① 输入</b></p>
           <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">生产订单交付日期 + BOM 物料清单（铜/硅钢片/绝缘材料用量）+ 供应商历史交货天数</p>
           <p style="margin:0 0 2px"><b>② 算法</b></p>
-          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">MRP 反向推导 + 时序预测：订单交期 → 开工日期 → 原料到货日期，结合供应商交货波动算安全库存</p>
+          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">MRP 反向推导：根据交付日倒推开工日和原料到货日<br>时序预测：根据供应商历史交货波动计算安全库存缓冲</p>
           <p style="margin:0 0 2px"><b>③ 输出</b></p>
           <p style="margin:0;color:var(--text-2);font-size:11px">每批次订单的原料采购计划表 + 安全库存量</p>
         </div>
@@ -785,9 +785,9 @@
           <p style="margin:0 0 2px"><b>① 输入</b></p>
           <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">在役设备分布地图 + 各型号故障率曲线 + 备件历史消耗 + 采购周期</p>
           <p style="margin:0 0 2px"><b>② 算法</b></p>
-          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">泊松分布 / Weibull 故障模型 → 按区域仓库计算备件需求概率，保证 95% 不断供</p>
+          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">泊松分布：回答“备几个”，根据故障频率计算备件数量<br>Weibull 分布：回答“什么时候会坏”，画出零件寿命曲线</p>
           <p style="margin:0 0 2px"><b>③ 输出</b></p>
-          <p style="margin:0;color:var(--text-2);font-size:11px">每个区域仓库建议备件清单 + 补货触发点</p>
+          <p style="margin:0;color:var(--text-2);font-size:11px">每个区域仓库建议备件清单 + 补货触发点，保证 95% 不断供</p>
         </div>
         
       </div>
@@ -795,20 +795,20 @@
       <div class="grid g1" style="gap:10px;font-size:12px">
         
         <div class="card" style="padding:16px 20px">
-          <p style="margin:0 0 6px;font-weight:700;color:var(--accent);font-size:14px">🚨 滞销/呆滯预警</p>
+          <p style="margin:0 0 6px;font-weight:700;color:var(--accent);font-size:14px">🚨 滞销/呆滞预警</p>
           <p style="margin:0 0 2px"><b>① 输入</b></p>
-          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">原料库龄 + 在制品滯留天数 + 成品库存周转率 + 订单取消/变更记录</p>
-          <p style="margin:0 0 2px"><b>② 算法</b></p>
+          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">原料库龄 + 在制品滞留天数 + 成品库存周转率 + 订单取消/变更记录</p>
+          <p style="margin:0 0 2px"><b>② 规则法</b></p>
           <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">规则引擎：库龄(30/60/90天) + 订单状态(是否已排产) + 替代通用性(专用/通用料) → 三级预警</p>
           <p style="margin:0 0 2px"><b>③ 输出</b></p>
-          <p style="margin:0;color:var(--text-2);font-size:11px">呆滯物料清单 + 建议处理方案（调拨/折价/报废）</p>
+          <p style="margin:0;color:var(--text-2);font-size:11px">呆滞物料清单 + 建议处理方案（调拨/折价/报废）</p>
         </div>
         
       </div>
       
     </div>
     
-    <div class="notes">装备制造库存与电商库存的本质区别：电商看历史销量曲线，实业看生产排期和设备可靠性。三个核心场景：BOM物料需求预测、备件库存、呆滯预警。</div>
+    <div class="notes">装备制造库存与电商库存的本质区别：电商看历史销量曲线，实业看生产排期和设备可靠性。三个核心场景：BOM物料需求预测、备件库存、呆滞预警。</div>
   </section>
 
 
@@ -1191,6 +1191,11 @@
 
 </div>
 
+<div class="card" style="padding:14px 18px;margin-top:12px;background:#fef9e7;border:1px solid #e67e22;border-left:3px solid #e67e22">
+<h4 style="margin:0 0 6px;color:#e67e22">⚠️ 原则：高风险操作留人把关</h4>
+<p style="margin:0;font-size:12px;line-height:1.6;color:var(--text-2)">退款、改价、关单、发券等涉及资金与不可逆的操作，<b>AI 只做信息层</b>（查询/解释/引导），<b>执行层由人确认</b>。钱的事，人说了算。</p>
+</div>
+
 <div class="deck-footer"><span class="dim2">AI智能客服</span><span>23 / 25</span></div>
 
 </section>
@@ -1203,30 +1208,53 @@
 
   <!-- ===== 16. 安全合规 ===== -->
   <section class="slide" data-title="安全合规">
-    <p class="kicker">Category 06</p>
-    <h2 class="h2">🛡️ 安全合规与安全</h2>
-    <p class="dim" style="margin-bottom:20px">数据安全防护 + 合规审核 + AI 安全监控，确保 AI 应用安全可控</p>
-    <div class="grid g2 mt-m" style="gap:20px">
-      <div class="card" style="padding:20px">
-        <div class="accent-bar coral"></div>
-        <h4 style="margin:0 0 10px">安全防护</h4>
-        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
-          <li>数据脱敏：敏感信息自动识别与匿名化处理</li>
-          <li>访问控制：基于角色的细粒度权限管理</li>
-          <li>AI 防火墙：检测并拦截 Prompt 注入攻击</li>
-        </ul>
+    <p class="kicker">Category 06 · 行业安全合规</p>
+    <h2 class="h2">🛡️ 安全合规与审计</h2>
+    <p class="dim" style="margin-bottom:16px">AI 驱动行业安全合规：水质监控、处方审查、合同风险识别</p>
+
+    <div class="mt-m anim-stagger-list" data-anim-target style="display:flex;flex-direction:column;gap:14px">
+
+      <div class="grid g2" style="gap:10px;font-size:12px">
+
+        <div class="card" style="padding:16px 20px">
+          <p style="margin:0 0 6px;font-weight:700;color:var(--accent);font-size:14px">💧 水质安全监控</p>
+          <p style="margin:0 0 2px"><b>① 输入</b></p>
+          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">水质传感器实时数据（pH、浊度、余氯、重金属）+ 国家饮用水标准 GB5749 + 历史水质基线</p>
+          <p style="margin:0 0 2px"><b>② 方法</b></p>
+          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">时序异常检测（自动识别数据波动中的真实异常）+ 规则引擎合规判断（对照 GB5749 各项指标限值）</p>
+          <p style="margin:0 0 2px"><b>③ 输出</b></p>
+          <p style="margin:0;color:var(--text-2);font-size:11px">异常水质实时告警 + 合规达标报告（可直接提交监管部门）</p>
+        </div>
+
+        <div class="card" style="padding:16px 20px">
+          <p style="margin:0 0 6px;font-weight:700;color:var(--accent);font-size:14px">🏥 处方合规审查</p>
+          <p style="margin:0 0 2px"><b>① 输入</b></p>
+          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">处方单 + 药典/配伍禁忌规则库 + 患者病史与过敏史</p>
+          <p style="margin:0 0 2px"><b>② 方法</b></p>
+          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">规则引擎匹配药典禁忌（“十八反”“十九畏”）+ LLM 语义理解处方用药逻辑</p>
+          <p style="margin:0 0 2px"><b>③ 输出</b></p>
+          <p style="margin:0;color:var(--text-2);font-size:11px">处方合规标注（✅合规 / ⚠️风险 / ❌违规）+ 修改建议 + 风险条目高亮</p>
+        </div>
+
       </div>
-      <div class="card" style="padding:20px">
-        <div class="accent-bar blue"></div>
-        <h4 style="margin:0 0 10px">合规审计</h4>
-        <ul class="dim" style="font-size:13px;margin:0;padding-left:18px;line-height:1.9">
-          <li>合规扫描：GDPR、等保、行业法规自动检查</li>
-          <li>操作审计：全链路日志记录与异常行为告警</li>
-          <li>AI 模型安全：幻觉检测、偏见评估、对抗测试</li>
-        </ul>
+
+      <div class="grid g1" style="gap:10px;font-size:12px">
+
+        <div class="card" style="padding:16px 20px">
+          <p style="margin:0 0 6px;font-weight:700;color:var(--accent);font-size:14px">🤝 合同风险审查</p>
+          <p style="margin:0 0 2px"><b>① 输入</b></p>
+          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">合同文本 + 法律法规库（民法典、合同法、行业条例）+ 历史合同风险案例</p>
+          <p style="margin:0 0 2px"><b>② 方法</b></p>
+          <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">LLM 条款解析 + 与法规库对比 + 风险等级判定（高/中/低）</p>
+          <p style="margin:0 0 2px"><b>③ 输出</b></p>
+          <p style="margin:0;color:var(--text-2);font-size:11px">风险条款高亮 + 修改建议 + 合规评分（0-100）</p>
+        </div>
+
       </div>
+
     </div>
-    <div class="notes">安全合规 = 数据安全 + 边缘计算。安全工程师借助 AI 模型，24 小时不间断监控防护。</div>
+
+    <div class="notes">AI 安全合规不是“管 AI 本身”，而是“用 AI 做安全合规”。水务、医疗、专业服务三个行业，让 AI 做人类审查员做不到的事：全量、实时、不疲倦。</div>
   </section>
 
   <!-- ===== 17. 总结 ===== -->
@@ -1262,7 +1290,7 @@
       <div class="card" style="padding:18px;text-align:center">
         <div style="font-size:36px;margin-bottom:8px">🛡️</div>
         <h4 style="margin:0 0 6px">安全与合规</h4>
-        <p class="dim" style="font-size:12px;margin:0">安全监控 . 合规审查<br>数据脱敏防护</p>
+        <p class="dim" style="font-size:12px;margin:0">水质监控 . 处方审查<br>合同风险识别</p>
       </div>
     </div>
     <div class="notes">6 大 AI 能力覆盖 16 家企业核心业务场景。从开发到客服，从知识检索到安全合规，AI 正在重塑每一个业务环节。</div>
