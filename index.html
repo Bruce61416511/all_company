@@ -773,70 +773,13 @@
 
 
 
-<section class="slide" data-title="需求预测引擎">
 
-<p class="kicker">Category 03 · 电商销量预测</p>
-
-<h2 class="h2">电商SKU销量预测</h2>
-
-<div class="grid g1 mt-m anim-stagger-list" data-anim-target style="gap:12px">
-
-<div class="card" style="padding:16px 20px">
-
-<div class="grid g2" style="gap:8px;font-size:12px">
-<div>
-<p style="margin:0 0 4px;font-weight:700;color:var(--accent)">💡 TFT · 多因素预测模型</p>
-<p style="margin:0 0 6px;color:var(--text-3);font-size:11px">① 根据：Google/Oxford 2021 论文，M5 时序预测竞赛前列，自带可解释性</p>
-<p style="margin:0 0 2px"><b>② 输入</b></p>
-<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">历史销量（店铺后台）+ 促销标签/折扣深度（商家后台活动配置）+ 城市天气（和风天气/OpenWeatherMap API）+ 节假日/大促日（人工维护大促日历表）+ 社媒搜索指数（Google Trends / 蝉妈妈 / 百度指数）</p>
-<p style="margin:0 0 2px"><b>③ 算法</b></p>
-<p style="margin:0 0 2px;color:var(--text-2);font-size:11px;font-weight:600">TFT 算法（Temporal Fusion Transformer）</p>
-<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">⚡ 零代码：AWS Forecast | Google Vertex AI | 阿里云 PAI</p>
-<p style="margin:0 0 2px"><b>④ 输出</b></p>
-<p style="margin:0;color:var(--text-2);font-size:11px">未来30天日级销量预测表</p>
-</div>
-
-<div>
-<p style="margin:0 0 4px;font-weight:700;color:var(--accent)">📊 分层预测 · 量级分策略</p>
-<p style="margin:0 0 6px;color:var(--text-3);font-size:11px">① 根据：零售行业通行做法，不同量级商品统计特性不同，需分层建模</p>
-<p style="margin:0 0 2px"><b>② 输入</b></p>
-<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">商品日均销量分层（店铺后台订单数据）：爆款（>100件/天）、腰部（10-100）、长尾（<10）</p>
-<p style="margin:0 0 2px"><b>③ 算法</b></p>
-<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">爆款：DeepAR | 腰部：LightGBM | 长尾：Croston 间歇加权评分公式</p>
-<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">⚡ 零代码：DeepAR → AWS Forecast &nbsp;|&nbsp; LightGBM → 阿里云 PAI / Azure AutoML &nbsp;|&nbsp; Croston → 需自写</p>
-<p style="margin:0 0 6px;color:var(--text-3);font-size:10px">均为专用时序预测算法，非语言大模型</p>
-<p style="margin:0 0 2px"><b>④ 输出</b></p>
-<p style="margin:0;color:var(--text-2);font-size:11px">爆款未来30天销量预测 / 腰部未来30天销量预测 / 长尾未来30天销量预测</p>
-</div>
-</div>
-
-</div>
-
-<div class="card" style="padding:14px 20px">
-<div class="grid g1" style="gap:8px;font-size:11px">
-<div>
-<p style="margin:0 0 4px;font-weight:700;color:var(--accent)">⚡ TFT · 算力 & 成本</p>
-<p style="margin:0;color:var(--text-2);line-height:1.7">算力：高 — 全量 SKU 训练，需 GPU<br>成本：贵 — 按训练时长 + 调用次数计费<br>适合：SKU 少、数据丰富、预算充足</p>
-</div>
-<div>
-<p style="margin:0 0 4px;font-weight:700;color:var(--accent)">💰 分层 · 算力 & 成本</p>
-<p style="margin:0;color:var(--text-2);line-height:1.7">算力：低 — 仅爆款用 DeepAR，其余轻量<br>成本：省 — 总成本约 TFT 的 20-30%<br>适合：SKU 多、长尾占比大、控预算</p>
-</div>
-</div>
-</div>
-
-
-<div class="deck-footer"><span>17 / 27</span></div>
-
-<div class="notes">左边TFT是单品精细预测，右边分层是全店策略。爆款用TFT日级精算，腰部用LightGBM周级够用，长尾用Croston判断会不会卖。好钢用在刀刃上——全店1000个SKU不用都上TFT。——它能同时处理销量、促销、天气、节假日等多种因素，输出未来30天的预测和置信区间。分层预测的关键：爆款要日粒度精细管理，长尾商品用间歇加权评分公式，不要一刀切。</div>
-
-</section>
 
 <section class="slide" data-title="智能库存管理">
 
 <p class="kicker">Category 03 · 库存+调拨+预警</p>
 
-<h2 class="h2">电商SKU - 安全库存 + 多仓调拨 + 滞销预警</h2>
+<h2 class="h2">SKU - 安全库存 + 多仓调拨 + 滞销预警</h2>
 
 <div class="mt-l anim-stagger-list" data-anim-target style="display:flex;flex-direction:column;gap:14px">
 
@@ -845,9 +788,9 @@
 <div class="card" style="padding:16px 20px">
 <p style="margin:0 0 6px;font-weight:700;color:var(--accent);font-size:14px">📦 安全库存动态计算</p>
 <p style="margin:0 0 2px"><b>① 输入</b></p>
-<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">需求预测（上一页 TFT 输出），供应商历史交货天数，目标服务水平=98%</p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">需求预测（TFT / DeepAR / LightGBM / Croston），供应商历史交货天数，目标服务水平=98%</p>
 <p style="margin:0 0 2px"><b>② 算法</b></p>
-<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">Monte Carlo 仿真：每次随机抽取 TFT 某一天预测销量 + 供应商某一次历史交货天数，模拟一万次 → 计算不同库存水平下的断货概率<br><span style="font-size:10px;color:var(--text-3)">⚡ @RISK / Oracle Crystal Ball（零代码）</span></p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">Monte Carlo 仿真：每次随机抽取预测算法某一天预测销量 + 供应商某一次历史交货天数，模拟一万次 → 计算不同库存水平下的断货概率<br><span style="font-size:10px;color:var(--text-3)">⚡ @RISK / Oracle Crystal Ball（零代码）</span></p>
 <p style="margin:0 0 2px"><b>③ 输出</b></p>
 <p style="margin:0;color:var(--text-2);font-size:11px">满足98% 不断货所需的最小安全库存量</p>
 </div>
@@ -855,7 +798,7 @@
 <div class="card" style="padding:16px 20px">
 <p style="margin:0 0 6px;font-weight:700;color:var(--accent);font-size:14px">🚚 多仓智能调拨</p>
 <p style="margin:0 0 2px"><b>① 输入</b></p>
-<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">各仓当前库存，各区域需求预测（← 上一页 TFT 输出），仓间运输成本</p>
+<p style="margin:0 0 6px;color:var(--text-2);font-size:11px">各仓当前库存，各区域需求预测（TFT / DeepAR / LightGBM / Croston），仓间运输成本</p>
 <p style="margin:0 0 2px"><b>② 算法</b></p>
 <p style="margin:0 0 6px;color:var(--text-2);font-size:11px">整数规划（Google OR-Tools）求解最小值：运输成本 + 持有成本 + 缺货损失<br><span style="font-size:10px;color:var(--text-3)">⚡ Gurobi / CPLEX（企业版）</span></p>
 <p style="margin:0 0 2px"><b>③ 输出</b></p>
@@ -884,7 +827,7 @@
 
 <div class="deck-footer"><span>20 / 27</span></div>
 
-<div class="notes">库存管理的四个核心：Monte Carlo仿真定安全库存；整数规划解决多仓调拨；规则引擎做滞销预警；GPT-4o辅助出清仓方案。</div>
+<div class="notes">库存管理的三个核心：Monte Carlo仿真定安全库存；整数规划解决多仓调拨；规则引擎做滞销预警。</div>
 
 </section>
 
@@ -940,25 +883,25 @@
       <div style="background:var(--surface);border:2px solid var(--accent-2);border-radius:12px;padding:16px 20px;text-align:center;min-width:110px">
         <div style="font-size:28px;margin-bottom:4px">💬</div>
         <div style="font-weight:700;color:var(--accent-2);font-size:13px">自然语言提问</div>
-        <div style="font-size:10px;color:var(--text-3)">“广州仓要备多少铜线？”</div>
+        <div style="font-size:10px;color:var(--text-3)">“A 款鱼竿要备多少货？”</div>
       </div>
       <div style="font-size:20px;color:var(--text-3)">→</div>
       <div style="background:var(--surface);border:2px solid var(--accent);border-radius:12px;padding:16px 20px;text-align:center;min-width:110px">
         <div style="font-size:28px;margin-bottom:4px">🧠</div>
         <div style="font-weight:700;color:var(--accent);font-size:13px">LLM 意图识别</div>
-        <div style="font-size:10px;color:var(--text-3)">“这是在问物料需求”</div>
+        <div style="font-size:10px;color:var(--text-3)">“这是在问 SKU 库存需求”</div>
       </div>
       <div style="font-size:20px;color:var(--text-3)">→</div>
       <div style="background:var(--surface);border:2px solid var(--good);border-radius:12px;padding:16px 20px;text-align:center;min-width:110px">
         <div style="font-size:28px;margin-bottom:4px">🔧</div>
         <div style="font-weight:700;color:var(--good);font-size:13px">调用算法</div>
-        <div style="font-size:10px;color:var(--text-3)">MRP + 时序预测</div>
+        <div style="font-size:10px;color:var(--text-3)">TFT / 分层预测</div>
       </div>
       <div style="font-size:20px;color:var(--text-3)">→</div>
       <div style="background:var(--good-bg);border:2px solid var(--good);border-radius:12px;padding:16px 20px;text-align:center;min-width:110px">
         <div style="font-size:28px;margin-bottom:4px">📋</div>
         <div style="font-weight:700;color:var(--good);font-size:13px">人话输出</div>
-        <div style="font-size:10px;color:var(--text-3)">“建议备 3.2 吨，7月8日前下单”</div>
+        <div style="font-size:10px;color:var(--text-3)">“建议备 420 件，7月8日前下单”</div>
       </div>
     </div>
 
@@ -967,7 +910,7 @@
         <div class="emoji">📦</div>
         <div>
           <h5 style="margin:0 0 4px">LLM 根据意图匹配 Skill → 调用对应模块</h5>
-          <p class="dim" style="font-size:13px;margin:0">① 销量预测（TFT / 分层策略）　② 安全库存计算（Monte Carlo）<br>③ 多仓调拨优化（整数规划）　④ 滞销预警（规则引擎）</p>
+          <p class="dim" style="font-size:13px;margin:0">① 销量预测（TFT / DeepAR / LightGBM / Croston）　② 安全库存计算（Monte Carlo）<br>③ 多仓调拨优化（整数规划）　④ 滞销预警（规则引擎）</p>
         </div>
       </div>
       <div class="card pain-card">
